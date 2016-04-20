@@ -158,15 +158,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="_Scene.cpp" />
-    <ClCompile Include="_Scene_mananger.cpp" />
-    <ClCompile Include="_Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="_Scene.h" />
-    <ClInclude Include="_Scene_mananger.h" />
-    <ClInclude Include="_Sprite.h" />
+    <ClInclude Include="GameObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
