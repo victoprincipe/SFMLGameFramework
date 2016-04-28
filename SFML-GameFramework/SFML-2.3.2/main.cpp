@@ -1,10 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Game.h"
 #include "GameObject.h"
 
 
 int main()
 {	
+	Game *game = new Game("Test", 1280, 720);
+	
 	sf::RenderWindow window(sf::VideoMode(640, 480, 32), "SFML Demo 3");
 
 	sf::CircleShape shape(100.f);
