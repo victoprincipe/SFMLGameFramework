@@ -1,14 +1,16 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Game.h"
+
+class Game;
 
 class AbstractScene
 {
 protected:
-	sf::RenderWindow *window;
-protected:	
-	void run(sf::RenderWindow *window);
-	virtual void start();
-	virtual void update();
-	virtual void render();
+	Game *game;
+public:
+	void setGame(Game *game);
+	virtual void start() = 0;
+	virtual void update() = 0;
+	virtual void render() = 0;
 };
 

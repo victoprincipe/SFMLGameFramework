@@ -1,21 +1,29 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Scene.h"
+#include "AbstractScene.h"
+
+class AbstractScene;
 
 class Game
 {
-private:
+public:
 	sf::RenderWindow *window;
-	sf::VideoMode *vm;	
-	//ADD GETTER SETTERS
-	sf::Image icon;
+private:	
+	AbstractScene *runningScene;
+	std::vector<AbstractScene*> sceneList;
+	//FAZER OS SETS E GETS
 	sf::String title;
 	int width;
-	int height;
-	int frameRate;
+	int height;	
+private:	
+	void start();
+	void update();
+	void render();
 public:
-	Game(sf::String title, int width, int height);
+	void run();
+	void addScene(AbstractScene *scene);
+	Game(int width, int height, sf::String title);
 	~Game();
 };
 

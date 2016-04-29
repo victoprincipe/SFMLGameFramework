@@ -1,21 +1,21 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Scene.h"
 #include "Game.h"
-#include "GameObject.h"
 
 
 int main()
 {	
-	Game *game = new Game("Test", 1280, 720);
-	
+	Game *game = new Game(1280, 720, "Test");
+	Scene *scene = new Scene();
+	game->addScene(scene);
+	game->run();
+	/*
 	sf::RenderWindow window(sf::VideoMode(640, 480, 32), "SFML Demo 3");
 
 	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);	
-		
-	GameObject *a = new GameObject("TEST");
-	a->setTexture("mario.png");
-	a->setPosition(200, 200);
+	shape.setFillColor(sf::Color::Green);			
+	
 	
 	while (window.isOpen())
 	{
@@ -27,10 +27,9 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);	
-		window.draw(*a);
+		window.draw(shape);			
 		window.display();
 	}
-	
+	*/
 	return 0;
 }

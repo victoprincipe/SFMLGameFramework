@@ -1,17 +1,33 @@
 #include "Game.h"
 
 
-
-Game::Game(sf::String title, int width, int height)
+Game::Game(int width, int height, sf::String title)
 {
 	this->width = width;
 	this->height = height;
 	this->title = title;
-	this->vm = new sf::VideoMode(width, height);
-	this->window = new sf::RenderWindow(*this->vm, this->title);
+	this->window = new sf::RenderWindow(sf::VideoMode(width, height), title);	
 }
 
 
 Game::~Game()
 {
+}
+//ADD NA CENA NA LISTA DE CENAS
+void Game::addScene(AbstractScene *scene)
+{
+	scene->setGame(this);
+	runningScene = scene;
+}
+//PEGAR O PRIMEIRO VALOR DA LISTA DE CENAS QUANDO RODAR O run()
+void Game::run()
+{
+	runningScene->start();
+	while (this->window->isOpen())
+	{
+		runningScene->update();
+		this->window->clear();
+		runningScene->render();
+		this->window->display();
+	}
 }

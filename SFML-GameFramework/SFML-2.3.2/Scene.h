@@ -1,19 +1,17 @@
 #pragma once
-#include <vector>
+#include <SFML/Graphics.hpp>
 #include "AbstractScene.h"
-#include "GameObject.h"
 
-class Scene : AbstractScene
+class Scene : public AbstractScene
 {
 private:
-	sf::Texture *marioTexture;
-	sf::Sprite *mario;
-private:	
+	sf::Texture texture;
+	sf::Sprite sprite;
+public:
 	void start() override;
 	void update() override;
 	void render() override;
-public:
-	Scene(sf::RenderWindow *window);	
+	Scene();
 	~Scene();
 };
 
