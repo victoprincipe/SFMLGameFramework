@@ -3,8 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "AbstractScene.h"
-
-
+#include "EventHandler.h"
 
 class AbstractScene;
 
@@ -14,13 +13,13 @@ public:
 	enum GAMESTATE
 	{
 		RUNNING,
-		PAUSED,
+		PAUSED	
 	};
 public:
 	sf::RenderWindow *window;
 private:		
 	AbstractScene *runningScene;
-	std::vector<AbstractScene*> sceneList;	
+	std::vector<AbstractScene*> sceneList;
 	//FAZER OS SETS E GETS
 	sf::String title;
 	int width;
@@ -32,7 +31,7 @@ private:
 public:
 	//COLOCAR GAMESTATE COMO PRIVADO E FAZER SET GET
 	GAMESTATE gameState;
-	sf::Event event;	
+	sf::Event event;
 	void run();
 	void init();
 	void addScene(AbstractScene *scene);

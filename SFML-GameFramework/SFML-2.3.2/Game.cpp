@@ -24,13 +24,16 @@ void Game::addScene(AbstractScene *scene)
 //PEGAR O PRIMEIRO VALOR DA LISTA DE CENAS QUANDO RODAR O run()
 void Game::run()  
 {		
+	EventHandler* eventHandler = new EventHandler();
 	this->gameState = Game::RUNNING;
 	this->start();
 	while (this->window->isOpen())
 	{
-		//ORGANIZAR ESTE WHILE EM METODOS
+		//ORGANIZAR ESTE WHILE EM METODOS 
 		while (this->window->pollEvent(event) || true)
-		{			
+		{
+			eventHandler->handlerEvent(event, this);
+			/*
 			if (event.type == sf::Event::Closed)
 			{
 				this->window->close();
@@ -44,7 +47,8 @@ void Game::run()
 					else
 						this->gameState = Game::RUNNING;
 				}
-			}
+			} */
+
 			//ORGANIZAR CADA IF EM METODOS
 			if (gameState == Game::RUNNING)
 			{
