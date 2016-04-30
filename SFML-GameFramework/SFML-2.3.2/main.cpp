@@ -10,6 +10,7 @@ int main()
 	Scene *scene = new Scene();
 	game->addScene(scene);
 	game->run();
+	//game->init();
 	/*
 	sf::RenderWindow window(sf::VideoMode(640, 480, 32), "SFML Demo 3");
 

@@ -1,12 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "AbstractScene.h"
 
 class Scene : public AbstractScene
 {
 private:
 	sf::Texture texture;
-	sf::Sprite sprite;
+	sf::Sprite sprite;	
 public:
 	void start() override;
 	void update() override;

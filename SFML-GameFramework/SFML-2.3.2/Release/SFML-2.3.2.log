@@ -1,10 +1,7 @@
-﻿  AbstractScene.cpp
-  Game.cpp
-  Scene.cpp
-  main.cpp
+﻿  Scene.cpp
   Generating code
-  77 of 129 functions (59.7%) were compiled, the rest were copied from previous compilation.
-    69 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+  1 of 132 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFML-2.3.2.vcxproj -> C:\Users\MarinaEllen\Source\Repos\SFMLGameFramework\SFML-GameFramework\Release\SFML-2.3.2.exe
