@@ -2,10 +2,25 @@
 #include <iostream>
 #include "Scene.h"
 #include "Game.h"
-
+#include "GameEngine.h"
+#include "IntroState.h"
 
 int main()
 {	
+	GameEngine game(1280, 720, "Teste1");
+
+	game.init();
+	game.change_state(IntroState::Instance());
+	
+	while (game.is_running()) {
+		game.HandleEvents();
+		game.update();
+		game.Draw();
+	}
+
+	game.clean_up();
+	
+	/*
 	Game *game = new Game(1280, 720, "Test");
 	Scene *scene = new Scene();
 	game->addScene(scene);
