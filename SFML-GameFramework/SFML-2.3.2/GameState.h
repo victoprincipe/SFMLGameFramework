@@ -1,5 +1,8 @@
 #pragma once
 #include "GameEngine.h"
+#include "AbstractScene.h"
+
+class AbstractScene;
 
 // Interface do estado do jogo. Qualquer estado deve implementar essa abstração.
 class GameState {
@@ -21,6 +24,8 @@ public:
 protected:
 	GameState() {};
 	~GameState() {};
+
+	AbstractScene* scene_;
 private:
 
 };

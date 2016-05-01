@@ -1,5 +1,6 @@
 #pragma once
 #include "Game.h"
+#include "GameEngine.h"
 
 class Game;
 
@@ -12,5 +13,7 @@ public:
 	virtual void start() = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;
+
+	virtual void render(GameEngine* game) = 0;
 };
 

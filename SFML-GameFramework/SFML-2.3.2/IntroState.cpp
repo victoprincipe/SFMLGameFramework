@@ -1,7 +1,10 @@
 #include "IntroState.h"
-
+#include "IntroScene.h"
 void IntroState::init()
-{	
+{
+	scene_ = new IntroScene();
+	scene_->start();
+	/*
 	if (!render_texture_.create(500, 500)) {
 		printf("Render Texture not created");
 	}
@@ -9,7 +12,7 @@ void IntroState::init()
 		printf("Error in load file mario.png");
 	}
 	sprite_.setTexture(texture_);
-	sprite_.setPosition(200, 200);
+	sprite_.setPosition(200, 200);*/
 
 	printf("IntroState Init\n");
 }
@@ -47,11 +50,12 @@ void IntroState::HandleEvents(GameEngine* game)
 
 void IntroState::update(GameEngine* game)
 {	
-	game->get_window_()->clear();
+	scene_->update();
 }
 
 void IntroState::Draw(GameEngine* game)
 {	
+		/*
 	render_texture_.clear(sf::Color::Cyan);
 	render_texture_.draw(sprite_);
 	render_texture_.display();
@@ -59,6 +63,8 @@ void IntroState::Draw(GameEngine* game)
 
 	sf::Sprite sprite(render_texture_.getTexture());
 	game->get_window_()->draw(sprite);
+	game->get_window_()->display();*/
+	scene_->render(game);
 	game->get_window_()->display();
 }
 
@@ -70,3 +76,4 @@ IntroState* IntroState::Instance()
 		intro_state_ = new IntroState();
 	return intro_state_;
 }
+ 
