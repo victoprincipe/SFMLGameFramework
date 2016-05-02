@@ -8,24 +8,16 @@ class Scene;
 // Instancia de um estado introdutório do jogo
 class IntroState : public GameState {
 public:
-	void init() override;
-	void clean_up() override;
-
+	IntroState(AbstractScene* scene, EventHandler* event_handler) : 
+		GameState(scene, event_handler) {};
+	
 	void pause() override;
 	void resume() override;
 
-	void HandleEvents(GameEngine* game) override;
-	void Draw(GameEngine* game) override;
-	void update(GameEngine* game) override;
+	static IntroState* Instance(AbstractScene * scene, EventHandler * event_handler);
 
 	static IntroState* Instance();
-
-protected:	
-	IntroState() {};
 	~IntroState() {};
 private:		
-	static IntroState* intro_state_;	
-	sf::RenderTexture render_texture_;
-	sf::Texture texture_;
-	sf::Sprite sprite_;
+	static IntroState* intro_state_;		
 };

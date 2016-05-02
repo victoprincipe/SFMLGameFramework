@@ -12,6 +12,10 @@ public:
 	void start() override;
 	void update() override;
 	void render() override;
+
+	void update(GameEngine* game) override;
+	void render(GameEngine* game) override;
+
 	Scene();
 	~Scene();
 };

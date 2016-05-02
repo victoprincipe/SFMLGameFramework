@@ -1,31 +1,39 @@
 #pragma once
 #include "GameEngine.h"
 #include "AbstractScene.h"
+#include "EventHandler.h"
 
 class AbstractScene;
+class EventHandler;
 
 // Interface do estado do jogo. Qualquer estado deve implementar essa abstração.
 class GameState {
 public:
-	virtual void init() = 0;
-	virtual void clean_up() = 0;
+	GameState(AbstractScene* scene, EventHandler* event_handler):
+		scene_(scene), event_handler_(event_handler) {};
 
-	virtual void pause() = 0;
-	virtual void resume() = 0;
+	virtual void init();
+	virtual void clean_up();
+
+	virtual void pause() {};
+	virtual void resume() {};
 
 	void change_state(GameEngine* game, GameState* state) {
 		game->change_state(state);
 	}
 
-	virtual void HandleEvents(GameEngine* game) = 0;
-	virtual void Draw(GameEngine* game) = 0;
-	virtual void update(GameEngine* game) = 0;
+	void HandleEvents(GameEngine* game);
+	void Draw(GameEngine* game);
+	void update(GameEngine* game);
 
-protected:
-	GameState() {};
-	~GameState() {};
+	inline AbstractScene* get_scene_() { return scene_; }
+	inline EventHandler* get_event_handler() { return event_handler_; }
+
+	~GameState() { clean_up(); };
+protected:	
 
 	AbstractScene* scene_;
+	EventHandler* event_handler_;
 private:
 
 };

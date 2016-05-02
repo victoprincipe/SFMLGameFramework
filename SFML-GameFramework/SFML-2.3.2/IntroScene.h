@@ -4,6 +4,7 @@
 #include "AbstractScene.h"
 #include "GameEngine.h"
 
+// Cena introdutória
 class IntroScene : public AbstractScene
 {
 public:
@@ -13,8 +14,8 @@ public:
 	void update() override {};
 	void render() override {};
 
-	void update(GameEngine* game);
-	void render(GameEngine* game);
+	void update(GameEngine* game) override;
+	void render(GameEngine* game) override;
 	~IntroScene() {};
 
 private:

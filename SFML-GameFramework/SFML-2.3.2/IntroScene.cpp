@@ -16,4 +16,5 @@ void IntroScene::update(GameEngine* game)
 void IntroScene::render(GameEngine* game)
 {
 	game->get_window_()->draw(sprite_);
+	game->get_window_()->display();
 }

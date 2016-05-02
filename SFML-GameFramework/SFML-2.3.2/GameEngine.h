@@ -16,6 +16,7 @@ public:
 	void change_state(GameState* state);
 	inline void push_state(GameState* state);
 	inline void pop_state();
+	GameState* back_state();
 
 	void HandleEvents();
 	void Draw();

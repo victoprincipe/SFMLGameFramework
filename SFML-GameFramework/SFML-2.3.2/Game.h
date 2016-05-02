@@ -4,6 +4,7 @@
 #include <vector>
 #include "AbstractScene.h"
 #include "EventHandler.h"
+#include "GameState.h"
 
 class AbstractScene;
 

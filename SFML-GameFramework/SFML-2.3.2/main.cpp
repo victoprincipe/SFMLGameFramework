@@ -4,13 +4,18 @@
 #include "Game.h"
 #include "GameEngine.h"
 #include "IntroState.h"
+#include "IntroScene.h"
 
 int main()
 {	
 	GameEngine game(1280, 720, "Teste1");
 
+	AbstractScene* intro_scene = new IntroScene();
+	AbstractScene* mario_scene = new Scene();
+	EventHandler* event_handler = new EventHandler();
+
 	game.init();
-	game.change_state(IntroState::Instance());
+	game.change_state(IntroState::Instance(mario_scene, event_handler));
 	
 	while (game.is_running()) {
 		game.HandleEvents();

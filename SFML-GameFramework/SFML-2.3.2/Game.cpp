@@ -32,8 +32,8 @@ void Game::run()
 		//ORGANIZAR ESTE WHILE EM METODOS 
 		while (this->window->pollEvent(event) || true)
 		{
-			eventHandler->handlerEvent(event, this);
-			/*
+			
+			/*eventHandler->handlerEvent(event, this);
 			if (event.type == sf::Event::Closed)
 			{
 				this->window->close();

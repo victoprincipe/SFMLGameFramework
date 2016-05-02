@@ -14,6 +14,7 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
+	virtual void update(GameEngine* game) = 0;
 	virtual void render(GameEngine* game) = 0;
 };
 

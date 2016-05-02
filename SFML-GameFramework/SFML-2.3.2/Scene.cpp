@@ -38,3 +38,24 @@ void Scene::render()
 {
 	this->game->window->draw(this->sprite);
 }
+
+void Scene::update(GameEngine * game)
+{
+	sf::Event event;
+
+	event = game->back_state()->get_event_handler()->get_event_();
+
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (event.key.code == sf::Keyboard::Z)
+		{
+			this->sprite.setRotation(this->sprite.getRotation() + 1);
+		}
+	}
+}
+
+void Scene::render(GameEngine * game)
+{
+	game->get_window_()->draw(this->sprite);
+	game->get_window_()->display();
+}

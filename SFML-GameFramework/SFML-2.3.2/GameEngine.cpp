@@ -66,6 +66,13 @@ inline void GameEngine::pop_state()
 	}	
 }
 
+GameState * GameEngine::back_state()
+{
+	if (!states_.empty())
+		return states_.back();
+	return nullptr;
+}
+
 void GameEngine::HandleEvents()
 {
 	// gerencia o evento atual
