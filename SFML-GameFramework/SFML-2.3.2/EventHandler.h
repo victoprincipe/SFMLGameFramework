@@ -1,13 +1,14 @@
 #pragma once
-#include "Game.h"
-class Game;
+#include "GameEngine.h"
+class GameEngine;
 
 /* Trata todos os eventos gerados no jogo.*/
 class EventHandler {
-private:	
 public:
 	EventHandler();
 	~EventHandler();
-	void handlerEvent(sf::Event event, Game* game);
-
+	virtual void handlerEvent(GameEngine* game);
+	inline sf::Event get_event_() { return event_; }
+protected:
+	sf::Event event_;
 };
