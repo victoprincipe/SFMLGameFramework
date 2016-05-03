@@ -1,0 +1,22 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "AbstractScene.h"
+
+class Scene : public AbstractScene
+{
+private:
+	sf::Texture texture;
+	sf::Sprite sprite;	
+public:
+	void start() override;
+	void update() override;
+	void render() override;
+
+	void update(GameEngine* game) override;
+	void render(GameEngine* game) override;
+
+	Scene();
+	~Scene();
+};
+
