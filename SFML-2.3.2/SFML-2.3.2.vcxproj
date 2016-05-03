@@ -157,26 +157,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractScene.cpp" />
-    <ClCompile Include="EventHandler.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractScene.h" />
-    <ClInclude Include="EventHandler.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="IntroState.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene2.h" />
   </ItemGroup>
   <ItemGroup>

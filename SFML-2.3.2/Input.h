@@ -1,15 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Game.h"
-
-class Game;
+#include "GameEngine.h"
 
 class Input
 {
 private:
-	Game *game;
+	float horizontal_axis_;
+	float vertical_axis_;
 public:
-	void setGame(Game *game);
+	void eventHandling(GameEngine *game);
 	Input();
 	~Input();
 };

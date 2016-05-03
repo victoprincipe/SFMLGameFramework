@@ -12,21 +12,35 @@ GameEngine::GameEngine(int width, int height, sf::String title)
 void GameEngine::init()
 {	
 	this->running_scene_ = this->scenes_[0];
-	this->window_->setFramerateLimit(60);	
+	this->window_->setFramerateLimit(30);	
 	this->running = true;
 	this->game_loop();	
 }
 
+void GameEngine::setIcon(sf::String path)
+{
+	sf::Image icon;
+	icon.loadFromFile(path);
+	this->get_window_()->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+}
+
 void GameEngine::game_loop()
 {
-	while (this->is_running()) 
-	{
-		this->HandleEvents();
+	while (this->get_window_()->isOpen()) 
+	{		
+		this->HandleEvents();		
+		sf::Time elapsedTime = this->clock.restart();
 		this->update();
+		this->deltaTime = elapsedTime.asMilliseconds();		
 		this->get_window_()->clear();
 		this->Draw();
 		this->get_window_()->display();
 	}
+}
+
+float GameEngine::getDeltaTime()
+{
+	return this->deltaTime;
 }
 
 void GameEngine::change_scene(int index) 

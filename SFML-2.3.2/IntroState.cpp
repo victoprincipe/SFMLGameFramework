@@ -34,21 +34,33 @@ void IntroState::HandleEvents(GameEngine* game)
 	// captura o evento
 	game->get_window_()->pollEvent(event);
 	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		this->sprite_.setPosition(this->sprite_.getPosition().x - 1 * game->getDeltaTime(), this->sprite_.getPosition().y);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		this->sprite_.setPosition(this->sprite_.getPosition().x + 1 * game->getDeltaTime(), this->sprite_.getPosition().y);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	{
+		game->change_scene(1);
+	}
+
 	// realiza um comando dado o tipo de eventp
 	switch (event.type) {
 		case sf::Event::Closed:
 			game->get_window_()->close();
-			break;	
-		case sf::Event::KeyPressed:
-			game->change_scene(1);
-			break;
+			break;			
 	}
 	
 }
 
 void IntroState::update(GameEngine* game)
 {	
-	this->sprite_.setPosition(this->sprite_.getPosition().x + 1, this->sprite_.getPosition().y);	
+	
 }
 
 void IntroState::Draw(GameEngine* game)

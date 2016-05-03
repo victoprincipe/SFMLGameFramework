@@ -1,8 +1,12 @@
 #include "Input.h"
 
-void Input::setGame(Game *game)
+void Input::eventHandling(GameEngine *game)
 {
-	this->game = game;
+	sf::Event event;
+	// captura o evento
+	game->get_window_()->pollEvent(event);
+	
+	
 }
 
 Input::Input()
