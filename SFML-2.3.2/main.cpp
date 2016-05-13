@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "TransformComponent.h"
 #include "MoveScript.h"
+#include "CameraComponent.h"
 
 
 void physics(sf::Sprite *s, float *velx, float accelx, float *vely, float accely)
@@ -100,15 +101,17 @@ int main()
 	SpriteComponent *marioSprite = new SpriteComponent();
 	TransformComponent *transform = new TransformComponent();
 	MoveScript *ms = new MoveScript();
+	CameraComponent *camera = new CameraComponent();
+	camera->rotateCamera(30);
 	marioSprite->setSprite("mario.png");
 	transform->setPosition(300,100);
 	mario->AddComponent(transform);
 	mario->AddComponent(marioSprite);
 	mario->AddComponent(ms);	
+	mario->AddComponent(camera);
 	scene1->addGameObject(mario);
 
-	//CENA 2
-	
+	//CENA 2	
 	GameScene *scene2 = new GameScene();
 	GameObject *sonic = new GameObject();
 	SpriteComponent *sonicSprite = new SpriteComponent();

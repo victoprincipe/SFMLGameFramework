@@ -19,7 +19,7 @@ public:
 	
 	void change_scene(int index);
 	void push_scene(GameScene* scene);
-	void setIcon(sf::String path);
+	void setIcon(sf::String path);	
 	float getDeltaTime();
 	
 	std::string get_title_() {return title; }
