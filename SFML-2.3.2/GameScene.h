@@ -2,22 +2,16 @@
 #include "GameEngine.h"
 
 class GameEngine;
+class GameObject;
 
-// Interface do estado do jogo. Qualquer estado deve implementar essa abstração.
 class GameScene {
+private:
+	std::vector<GameObject*> gameObjects;
+public:	
+	void Start(GameEngine* game);
+	void Update(GameEngine* game);
+	void addGameObject(GameObject * go);
 public:
-	virtual void init() = 0;
-	virtual void clean_up() = 0;
-
-	virtual void pause() = 0;
-	virtual void resume() = 0;
-		
-	virtual void HandleEvents(GameEngine* game) = 0;	
-	virtual void update(GameEngine* game) = 0;
-	virtual void Draw(GameEngine* game) = 0;
-protected:
 	GameScene() {};
 	~GameScene() {};	
-private:
-	static GameScene* scene_;
 };

@@ -12,10 +12,12 @@ GameEngine::GameEngine(int width, int height, sf::String title)
 void GameEngine::init()
 {	
 	this->running_scene_ = this->scenes_[0];
-	this->window_->setFramerateLimit(30);	
+	this->window_->setFramerateLimit(60);	
 	this->running = true;
+	this->Start();
 	this->game_loop();	
 }
+
 
 void GameEngine::setIcon(sf::String path)
 {
@@ -27,13 +29,11 @@ void GameEngine::setIcon(sf::String path)
 void GameEngine::game_loop()
 {
 	while (this->get_window_()->isOpen()) 
-	{		
-		this->HandleEvents();		
-		sf::Time elapsedTime = this->clock.restart();
-		this->update();
-		this->deltaTime = elapsedTime.asMilliseconds();		
+	{	
 		this->get_window_()->clear();
-		this->Draw();
+		sf::Time elapsedTime = this->clock.restart();		
+		this->Update();
+		this->deltaTime = elapsedTime.asMilliseconds();				
 		this->get_window_()->display();
 	}
 }
@@ -46,6 +46,7 @@ float GameEngine::getDeltaTime()
 void GameEngine::change_scene(int index) 
 {
 	this->running_scene_ = scenes_[index];
+	this->running_scene_->Start(this);
 }
 
 void GameEngine::push_scene(GameScene* scene) 
@@ -53,20 +54,14 @@ void GameEngine::push_scene(GameScene* scene)
 	scenes_.push_back(scene);
 }
 
-void GameEngine::HandleEvents()
-{
-	// gerencia o evento atual
-	running_scene_->HandleEvents(this);
-}
-
-void GameEngine::Draw() 
+void GameEngine::Start() 
 {
 	// desenha o estado na tela
-	running_scene_->Draw(this);
+	running_scene_->Start(this);
 }
 
-void GameEngine::update()
+void GameEngine::Update()
 {
 	// atualiza o estado do jogo
-	running_scene_->update(this);
+	running_scene_->Update(this);
 }

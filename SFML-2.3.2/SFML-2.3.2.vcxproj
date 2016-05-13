@@ -157,19 +157,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene2.cpp" />
+    <ClCompile Include="MoveScript.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="IntroState.h" />
-    <ClInclude Include="Scene2.h" />
+    <ClInclude Include="MoveScript.h" />
+    <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

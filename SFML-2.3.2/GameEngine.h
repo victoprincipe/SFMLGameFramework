@@ -4,13 +4,16 @@
 #include <vector>
 #include <string>
 #include "GameScene.h"
+#include "GameObject.h"
+#include "Component.h"
 
 class GameScene;
+class GameObject;
+class Component;
 
 // Gerencia os recursos da janela principal e os estados do jogo.
 class GameEngine {
-public:
-	enum GameState{ RUNNING, PAUSED};
+public:	
 	GameEngine(int height, int width, sf::String title);
 	void init();	
 	
@@ -23,16 +26,13 @@ public:
 	int get_height_() { return height; }
 	int get_width_() { return width; }
 
-	sf::RenderWindow* get_window_() { return window_; }	
-
+	sf::RenderWindow* get_window_() { return window_; }		
 private:
-	void game_loop();
-	void HandleEvents();
-	void Draw();
-	void update();
+	void game_loop();	
+	void Start();
+	void Update();
 private:
-	bool running;
-	GameState game_state_;	
+	bool running;		
 	GameScene *running_scene_;
 	std::vector<GameScene*> scenes_;
 	sf::RenderWindow* window_;
