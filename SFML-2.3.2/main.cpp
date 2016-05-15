@@ -9,6 +9,8 @@
 #include "TransformComponent.h"
 #include "MoveScript.h"
 #include "CameraComponent.h"
+#include "GameDataBase.h"
+#include "TXTDataBase.h"
 
 
 void physics(sf::Sprite *s, float *velx, float accelx, float *vely, float accely)
@@ -93,6 +95,21 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 
 int main()
 {	
+	// Test game data base
+	GameDataBase *db = new TXTDataBase();
+	db->open("pontos.txt");
+	db->save_data("pontuacao maxima", "500");
+	db->save_data("pontuacao minima", "501");
+	db->save_data("pontuacao media", "499");	
+	std::cout << db->load_data("pontuacao minima");
+	std::cout << db->load_data("pontuacao media1");
+	std::cout << db->load_data("pontuacao maxima");	
+	std::cout << db->load_data("pontuacao media");
+	std::cout << db->load_data("pontuacao minima");
+	db->close();
+	
+
+
 	GameEngine game(1280, 720, "Teste1");
 
 	//CENA 1
