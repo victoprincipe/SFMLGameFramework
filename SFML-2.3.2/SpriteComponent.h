@@ -18,6 +18,8 @@ public:
 	void setPosition(float x, float y);
 	float getPositionX();
 	float getPositionY();
+	float getSpriteWidth();
+	float getSpriteHeight();
 	void Start(GameEngine *game);
 	void Update(GameEngine *game);
 };

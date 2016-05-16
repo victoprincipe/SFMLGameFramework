@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "SpriteComponent.h"
 #include "TransformComponent.h"
+#include "CameraComponent.h"
 
 class MoveScript :	public Component
 {

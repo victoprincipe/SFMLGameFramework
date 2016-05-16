@@ -22,7 +22,7 @@ void CameraComponent::move(float x, float y)
 
 void CameraComponent::Start(GameEngine *game)
 {
-
+	this->camera = game->get_window_()->getDefaultView();
 }
 
 void CameraComponent::Update(GameEngine *game)

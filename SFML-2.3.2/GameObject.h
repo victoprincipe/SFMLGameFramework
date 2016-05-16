@@ -8,11 +8,12 @@ class Component;
 class GameScene;
 
 class GameObject
-{
+{	
 private:
-	std::vector<Component*> components;
-	GameScene *gameScene;
+	sf::String name;	
+	std::vector<Component*> components;		
 public:	
+	GameScene *gameScene = NULL;
 	template <class CompType>
 	void AddComponent(CompType *comp) {
 		comp->setGameObject(this);
@@ -29,7 +30,10 @@ public:
 		return NULL; 
 	}
 	void setGameScene(GameScene *gameScene);
+	GameObject *findGameObjectByName(sf::String name);
+	std::vector<GameObject*> getSceneObjects();
 	void Start(GameEngine *game);
 	void Update(GameEngine *game);
+	bool isSceneNull();
 };
 

@@ -3,7 +3,13 @@
 void GameScene::addGameObject(GameObject * go)
 {
 	go->setGameScene(this);
-	this->gameObjects.push_back(go);
+	TransformComponent *t = go->GetComponent<TransformComponent*>();
+	if (t == NULL)
+	{
+		TransformComponent *t = new TransformComponent();
+		go->AddComponent(t);
+	}
+	this->gameObjects.push_back(go);	
 }
 
 void GameScene::Start(GameEngine *game)

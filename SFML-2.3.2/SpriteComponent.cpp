@@ -1,5 +1,15 @@
 #include "SpriteComponent.h"
 
+float SpriteComponent::getSpriteWidth()
+{
+	return this->sprite.getTextureRect().width;
+}
+
+float SpriteComponent::getSpriteHeight()
+{
+	return this->sprite.getTextureRect().height;
+}
+
 void SpriteComponent::setSprite(sf::String path)
 {
 	this->texture.loadFromFile(path);
