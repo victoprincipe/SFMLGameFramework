@@ -8,7 +8,7 @@ TXTDataBase::TXTDataBase()
 }
 
 bool TXTDataBase::open(const char* file_name) {
-	file_.open(file_name);
+	file_.open(file_name, std::fstream::in | std::fstream::out | std::fstream::app);
 	
 	return file_.is_open();		
 }
