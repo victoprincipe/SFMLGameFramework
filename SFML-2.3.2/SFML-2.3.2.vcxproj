@@ -168,6 +168,7 @@
     <ClCompile Include="RigidbodyComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="TXTDataBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h" />
@@ -176,10 +177,12 @@
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameDataBase.h" />
     <ClInclude Include="MoveScript.h" />
     <ClInclude Include="RigidbodyComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="TXTDataBase.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

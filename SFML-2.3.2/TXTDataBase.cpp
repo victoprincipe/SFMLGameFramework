@@ -9,8 +9,8 @@ TXTDataBase::TXTDataBase()
 
 bool TXTDataBase::open(const char* file_name) {
 	file_.open(file_name, std::fstream::in | std::fstream::out | std::fstream::app);
-	
-	return file_.is_open();		
+
+	return file_.is_open();
 }
 
 bool TXTDataBase::close() {
@@ -56,43 +56,39 @@ bool contains_name(const char * file_name, const char * name) {
 
 /*
 long erase_line(std::fstream& overrided, const char * name) {
-	long pos;
-	char temp[256];
-	while (overrided.good()) {
-		overrided.getline(temp, 256, ':');
-		if (is_equals(temp, name)) {
-			long numb_character = 0;
-			char c;
-			while ((c = overrided.get()) != '\n') {
-				numb_character++;
-			}
-			numb_character += std::string(name).size();
-			pos = overrided.tellp();
-			pos -= numb_character;
-
-			break;
-		}
-	}
-	return pos;
+long pos;
+char temp[256];
+while (overrided.good()) {
+overrided.getline(temp, 256, ':');
+if (is_equals(temp, name)) {
+long numb_character = 0;
+char c;
+while ((c = overrided.get()) != '\n') {
+numb_character++;
 }
-
-
+numb_character += std::string(name).size();
+pos = overrided.tellp();
+pos -= numb_character;
+break;
+}
+}
+return pos;
+}
 void override_data(const char * file_name, const char * name, void * data) {
-	std::fstream overrided(file_name, std::fstream::out | std::fstream::in);	
-
-	if (overrided.is_open()) {					
-		overrided.seekg(erase_line(overrided, name));
-		overrided << name << ':' << data << '\n';											
-	}
+std::fstream overrided(file_name, std::fstream::out | std::fstream::in);
+if (overrided.is_open()) {
+overrided.seekg(erase_line(overrided, name));
+overrided << name << ':' << data << '\n';
+}
 }*/
 
 
 
 bool TXTDataBase::save_data(const char * name, const char* data)
-{	
+{
 	bool success = false;
-	if (file_.is_open()) {		
-		file_ << name << ":" << data << "\n";		
+	if (file_.is_open()) {
+		file_ << name << ":" << data << "\n";
 		success = true;
 	}
 
@@ -117,11 +113,11 @@ std::string TXTDataBase::getValue(const char * name) {
 	bool has_read = false;
 	char temp[256];
 
-	std::string value_str, name_str;	
-	if (file_.is_open()) {		
-		while (!file_.eof()) {			
+	std::string value_str, name_str;
+	if (file_.is_open()) {
+		while (!file_.eof()) {
 
-			file_.getline(temp, 256, '\n');			
+			file_.getline(temp, 256, '\n');
 			std::vector<std::string> vector = split(std::string(temp), ':');
 			if (vector.size() == 2) {
 				name_str = vector.at(0);
@@ -130,19 +126,19 @@ std::string TXTDataBase::getValue(const char * name) {
 					has_read = true;
 					break;
 				}
-			}			
+			}
 		}
 	}
 
 	if (!has_read) {
-		value_str = "not read";		
+		value_str = "not read";
 	}
 
 	return value_str;
 }
 
 std::string TXTDataBase::load_data(const char * name)
-{	
+{
 	file_.clear();
 	file_.seekp(0, file_.beg);
 	return getValue(name);

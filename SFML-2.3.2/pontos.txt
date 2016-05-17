@@ -1,0 +1,3 @@
+pontuacao maxima:500
+pontuacao minima:501
+pontuacao media:499
