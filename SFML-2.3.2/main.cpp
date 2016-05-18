@@ -13,6 +13,16 @@
 #include "RigidbodyComponent.h"
 #include "GameDataBase.h"
 #include "TXTDataBase.h"
+#include "sqlite3.h"
+
+using namespace std;
+
+void pausa()
+{
+	cout << "\nPressione qualquer tecla para continuar...";
+	cin.get();
+	cout << "\n";
+}
 
 void physics(sf::Sprite *s, float *velx, float accelx, float *vely, float accely)
 {	
@@ -96,7 +106,29 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 
 int main()
 {	
-	// Test game data base
+	// SQLite test database
+	//Handler (manipulador) que representa o banco de dados.
+	//Para cada conexão com banco de dados deve-se criar uma variável do tipo sqlite3
+	sqlite3 *db;
+
+	char *error; //Variável utilizada para armazenar mensagens de erro
+
+	cout << "Abrindo o banco de dados DADOS.db ..." << endl;
+
+	//Abrindo conexão com o banco de dados e verificando se a conexão foi realizada com sucesso
+	if (sqlite3_open("DADOS.db", &db) == 0)
+	{
+		cout << "Conexão realizada com sucesso\n";
+	}
+	else
+	{
+		cerr << "Erro ao abrir o banco de dados SQLite3: " << sqlite3_errmsg(db) << endl << endl;
+		sqlite3_close(db);
+		return 1;
+	}
+
+	pausa();
+	/* Test game data base
 	GameDataBase *db = new TXTDataBase();
 	db->open("pontos.txt");
 	db->save_data("pontuacao maxima", "500");
@@ -108,6 +140,7 @@ int main()
 	std::cout << db->load_data("pontuacao media");
 	std::cout << db->load_data("pontuacao minima");
 	db->close();
+	*/
 
 	GameEngine game(1280, 720, "Teste1");
 
@@ -267,3 +300,5 @@ int main()
 	*/
 	return 0;
 }
+
+
