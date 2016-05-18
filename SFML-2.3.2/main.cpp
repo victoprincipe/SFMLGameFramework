@@ -104,9 +104,8 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 	}			
 }
 
-int main()
-{	
-	// SQLite test database
+int testSQLite()
+{
 	//Handler (manipulador) que representa o banco de dados.
 	//Para cada conexão com banco de dados deve-se criar uma variável do tipo sqlite3
 	sqlite3 *db;
@@ -127,7 +126,112 @@ int main()
 		return 1;
 	}
 
+	//Criando uma tabela no banco de dados
+	cout << "Criando a tabela USUARIO" << endl;
+
+	const char *sqlCreateTable = "CREATE TABLE USUARIO (CODIGO INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, NOME VARCHAR(100), LOGON VARCHAR(15), SENHA VARCHAR(15)  );";
+
+	if (sqlite3_exec(db, sqlCreateTable, NULL, NULL, &error) != 0)
+	{
+		cerr << "Erro ao executar o comando SQL: " << sqlite3_errmsg(db) << endl << endl;
+		sqlite3_free(error); //libera recursos
+	}
+	else
+	{
+		cout << "Tabela criada com sucesso\n";
+	}
+
 	pausa();
+
+	//Inserindo dados
+	cout << "Inserindo dados na tabela usuário" << endl;
+
+	const char *sqlInsert = "INSERT INTO USUARIO VALUES(NULL, 'Paulo Vinícius', 'paulovinicius', '123456');";
+
+	if (sqlite3_exec(db, sqlInsert, NULL, NULL, &error) != 0)
+	{
+		cerr << "Erro ao executar o comando SQL: " << sqlite3_errmsg(db) << endl << endl;
+		sqlite3_free(error); //libera recursos
+	}
+	else
+	{
+		cout << "Registro inserido com sucesso\n";
+	}
+
+	pausa();
+
+	//Retornando dados
+	cout << "Retornando dados da tabela" << endl;
+
+	const char *sqlSelect = "SELECT CODIGO, NOME, LOGON, SENHA FROM USUARIO";
+
+	char **resultado = NULL; //Armazena o resultado da consulta SQL
+
+	int linhas = 0;   //quantidade de linhas retornados da consulta
+	int colunas = 0;  //quantidade de colunas retornados da consulta
+
+	if (sqlite3_get_table(db, sqlSelect, &resultado, &linhas, &colunas, &error) != 0)
+	{
+		cerr << "Erro ao executar o comando SQL: " << sqlite3_errmsg(db) << endl << endl;
+		sqlite3_free(error); //libera recursos
+	}
+	else
+	{
+
+		//Percorrendo as linhas e colunas do retorna da consulta
+		//OBS: A primeira linha do resultado são os nomes da colunas
+		for (int lin = 0; lin <= linhas; ++lin)
+		{
+
+			for (int col = 0; col < colunas; ++col)
+			{
+
+				//Determinando a posição da celular
+				int cellPosition = (lin * colunas) + col;
+
+				//Definindo o tamanho do contéudo que será impresso na tela
+				cout.width(15);
+				cout.setf(ios::left);
+				cout << resultado[cellPosition] << " ";
+
+			}
+
+			cout << endl;
+
+			// Imprime um separador para o cabeçalho
+			if (0 == lin) //Primeira linha
+			{
+
+				for (int colCtr = 0; colCtr < colunas; ++colCtr)
+				{
+					cout.width(15);
+					cout.setf(ios::left);
+					cout << "--------------- ";
+				}
+
+				cout << endl;
+			}
+
+		}
+
+	}
+
+	//liberando recursos
+	sqlite3_free_table(resultado);
+
+	cout << "Fechando DADOS.db ..." << endl;
+	sqlite3_close(db);
+
+	pausa();
+
+}
+
+int main()
+{	
+	// SQLite test database
+	testSQLite();
+
+	
 	/* Test game data base
 	GameDataBase *db = new TXTDataBase();
 	db->open("pontos.txt");
