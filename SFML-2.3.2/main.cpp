@@ -10,7 +10,7 @@
 #include "MoveScript.h"
 #include "CameraComponent.h"
 #include "GameDataBase.h"
-#include "TXTDataBase.h"
+#include "SQLiteDataBase.h"
 #include "sqlite3.h"
 
 using namespace std;
@@ -103,144 +103,20 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 	}			
 }
 
-int testSQLite()
-{
-	//Handler (manipulador) que representa o banco de dados.
-	//Para cada conexão com banco de dados deve-se criar uma variável do tipo sqlite3
-	sqlite3 *db;
-
-	char *error; //Variável utilizada para armazenar mensagens de erro
-
-	cout << "Abrindo o banco de dados DADOS.db ..." << endl;
-
-	//Abrindo conexão com o banco de dados e verificando se a conexão foi realizada com sucesso
-	if (sqlite3_open("DADOS.db", &db) == 0)
-	{
-		cout << "Conexão realizada com sucesso\n";
-	}
-	else
-	{
-		cerr << "Erro ao abrir o banco de dados SQLite3: " << sqlite3_errmsg(db) << endl << endl;
-		sqlite3_close(db);
-		return 1;
-	}
-
-	//Criando uma tabela no banco de dados
-	cout << "Criando a tabela USUARIO" << endl;
-
-	const char *sqlCreateTable = "CREATE TABLE USUARIO (CODIGO INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, NOME VARCHAR(100), LOGON VARCHAR(15), SENHA VARCHAR(15)  );";
-
-	if (sqlite3_exec(db, sqlCreateTable, NULL, NULL, &error) != 0)
-	{
-		cerr << "Erro ao executar o comando SQL: " << sqlite3_errmsg(db) << endl << endl;
-		sqlite3_free(error); //libera recursos
-	}
-	else
-	{
-		cout << "Tabela criada com sucesso\n";
-	}
-
-	pausa();
-
-	//Inserindo dados
-	cout << "Inserindo dados na tabela usuário" << endl;
-
-	const char *sqlInsert = "INSERT INTO USUARIO VALUES(NULL, 'Paulo Vinícius', 'paulovinicius', '123456');";
-
-	if (sqlite3_exec(db, sqlInsert, NULL, NULL, &error) != 0)
-	{
-		cerr << "Erro ao executar o comando SQL: " << sqlite3_errmsg(db) << endl << endl;
-		sqlite3_free(error); //libera recursos
-	}
-	else
-	{
-		cout << "Registro inserido com sucesso\n";
-	}
-
-	pausa();
-
-	//Retornando dados
-	cout << "Retornando dados da tabela" << endl;
-
-	const char *sqlSelect = "SELECT CODIGO, NOME, LOGON, SENHA FROM USUARIO";
-
-	char **resultado = NULL; //Armazena o resultado da consulta SQL
-
-	int linhas = 0;   //quantidade de linhas retornados da consulta
-	int colunas = 0;  //quantidade de colunas retornados da consulta
-
-	if (sqlite3_get_table(db, sqlSelect, &resultado, &linhas, &colunas, &error) != 0)
-	{
-		cerr << "Erro ao executar o comando SQL: " << sqlite3_errmsg(db) << endl << endl;
-		sqlite3_free(error); //libera recursos
-	}
-	else
-	{
-
-		//Percorrendo as linhas e colunas do retorna da consulta
-		//OBS: A primeira linha do resultado são os nomes da colunas
-		for (int lin = 0; lin <= linhas; ++lin)
-		{
-
-			for (int col = 0; col < colunas; ++col)
-			{
-
-				//Determinando a posição da celular
-				int cellPosition = (lin * colunas) + col;
-
-				//Definindo o tamanho do contéudo que será impresso na tela
-				cout.width(15);
-				cout.setf(ios::left);
-				cout << resultado[cellPosition] << " ";
-
-			}
-
-			cout << endl;
-
-			// Imprime um separador para o cabeçalho
-			if (0 == lin) //Primeira linha
-			{
-
-				for (int colCtr = 0; colCtr < colunas; ++colCtr)
-				{
-					cout.width(15);
-					cout.setf(ios::left);
-					cout << "--------------- ";
-				}
-
-				cout << endl;
-			}
-
-		}
-
-	}
-
-	//liberando recursos
-	sqlite3_free_table(resultado);
-
-	cout << "Fechando DADOS.db ..." << endl;
-	sqlite3_close(db);
-
-	pausa();
-
-}
-
-int main()
-{
-	// SQLite test database
-	testSQLite();	GameEngine game(1280, 720, "Teste1");
+void test1() {
+	GameEngine game(1280, 720, "Teste1");
 
 	//CENA 1
 	GameScene *scene1 = new GameScene();
 	GameObject *spaceShip = new GameObject();
 	SpriteComponent *marioSprite = new SpriteComponent();
 	TransformComponent *transformSpaceShip = new TransformComponent();
-	MoveScript *ms = new MoveScript();		
+	MoveScript *ms = new MoveScript();
 	marioSprite->setSprite("blueship.png");
-	transformSpaceShip->setPosition(0,310);
+	transformSpaceShip->setPosition(0, 310);
 	spaceShip->AddComponent(transformSpaceShip);
 	spaceShip->AddComponent(marioSprite);
-	spaceShip->AddComponent(ms);	
+	spaceShip->AddComponent(ms);
 	scene1->addGameObject(spaceShip);
 
 	//CENA 2	
@@ -255,14 +131,34 @@ int main()
 	sonic->AddComponent(sonicSprite);
 	sonic->AddComponent(msSonic);
 	scene2->addGameObject(sonic);
-	
+
 	game.push_scene(scene1);
-	game.push_scene(scene2);	
+	game.push_scene(scene2);
 	game.setIcon("sfmlIcon.png");
 	game.init();
-	return 0;
-	
+}
 
+void testSQLiteDataBase() {
+	GameDataBase * db = new SQLiteDataBase();
+	db->save_data("jogador", 1, 12.3, 22.23);
+	db->save_data("jogador1", 1, 12.3, 22.24);
+	db->save_data("jogador2", 1, 12.3, 22.24);
+	cout << db->load_int_data("jogador") << " ";
+	cout << db->load_float_data("jogador") << " ";
+	cout << db->load_double_data("jogador") << " ";
+	cout << db->load_double_data("jogador1");
+
+	pausa();
+}
+
+int main()
+{
+	// SQLite test database
+	testSQLiteDataBase();
+
+	test1();
+
+	return 0;	
 	/*
 	GameObject *go = new GameObject();	
 	SpriteComponent *sprite = new SpriteComponent;	

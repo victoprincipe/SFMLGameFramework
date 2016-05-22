@@ -48,13 +48,13 @@
     <ClCompile Include="ColliderComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TXTDataBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MoverCano.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BulletScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteDataBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,20 +92,22 @@
     <ClInclude Include="GameDataBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TXTDataBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MoverCano.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BulletScript.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteDataBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="enemy.png">
@@ -114,7 +116,7 @@
     <Image Include="blueship.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\..\..\Pictures\bullet.png">
+    <Image Include="bullet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
