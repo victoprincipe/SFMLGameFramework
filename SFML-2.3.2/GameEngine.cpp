@@ -26,6 +26,11 @@ void GameEngine::setIcon(sf::String path)
 	this->get_window_()->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
+void GameEngine::Instatiate(GameObject *go)
+{
+	this->running_scene_->addGameObject(go);
+}
+
 void GameEngine::game_loop()
 {
 	while (this->get_window_()->isOpen()) 

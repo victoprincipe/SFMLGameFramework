@@ -9,13 +9,12 @@
 #include "TransformComponent.h"
 #include "MoveScript.h"
 #include "CameraComponent.h"
-#include "ColliderComponent.h"
-#include "RigidbodyComponent.h"
 #include "GameDataBase.h"
 #include "TXTDataBase.h"
 #include "sqlite3.h"
 
 using namespace std;
+
 
 void pausa()
 {
@@ -227,83 +226,35 @@ int testSQLite()
 }
 
 int main()
-{	
+{
 	// SQLite test database
-	testSQLite();
-
-	
-	/* Test game data base
-	GameDataBase *db = new TXTDataBase();
-	db->open("pontos.txt");
-	db->save_data("pontuacao maxima", "500");
-	db->save_data("pontuacao minima", "501");
-	db->save_data("pontuacao media", "499");
-	std::cout << db->load_data("pontuacao minima");
-	std::cout << db->load_data("pontuacao media1");
-	std::cout << db->load_data("pontuacao maxima");
-	std::cout << db->load_data("pontuacao media");
-	std::cout << db->load_data("pontuacao minima");
-	db->close();
-	*/
-
-	GameEngine game(1280, 720, "Teste1");
+	testSQLite();	GameEngine game(1280, 720, "Teste1");
 
 	//CENA 1
-	//SONIC
+	GameScene *scene1 = new GameScene();
+	GameObject *spaceShip = new GameObject();
+	SpriteComponent *marioSprite = new SpriteComponent();
+	TransformComponent *transformSpaceShip = new TransformComponent();
+	MoveScript *ms = new MoveScript();		
+	marioSprite->setSprite("blueship.png");
+	transformSpaceShip->setPosition(0,310);
+	spaceShip->AddComponent(transformSpaceShip);
+	spaceShip->AddComponent(marioSprite);
+	spaceShip->AddComponent(ms);	
+	scene1->addGameObject(spaceShip);
+
+	//CENA 2	
+	GameScene *scene2 = new GameScene();
 	GameObject *sonic = new GameObject();
 	SpriteComponent *sonicSprite = new SpriteComponent();
 	TransformComponent *sonicTransform = new TransformComponent();
-	ColliderComponent *sonicCollider = new ColliderComponent();
-	RigidbodyComponent *sonicRigidBody = new RigidbodyComponent();
-	sonicCollider->setKinematic(true);
-	sonicSprite->setSprite("sonic.png");
-	sonicTransform->setPosition(600, 100);
-	sonic->AddComponent(sonicTransform);
-	sonic->AddComponent(sonicSprite);	
-	sonic->AddComponent(sonicCollider);
-	sonic->AddComponent(sonicRigidBody);
-	//MARIO
-	GameScene *scene1 = new GameScene();
-	GameObject *mario = new GameObject();
-	GameObject *marioBG = new GameObject();
-	SpriteComponent *marioSprite = new SpriteComponent();
-	SpriteComponent *marioBGSprite = new SpriteComponent();
-	TransformComponent *transform = new TransformComponent();
-	MoveScript *ms = new MoveScript();
-	CameraComponent *camera = new CameraComponent();
-	ColliderComponent *marioCollider = new ColliderComponent();
-	RigidbodyComponent *marioRigidBody = new RigidbodyComponent();
-	marioBGSprite->setSprite("marioBG.jpg");	
-	marioSprite->setSprite("mario.png");
-	transform->setPosition(300,100);
-	marioBG->AddComponent(marioBGSprite);
-	mario->AddComponent(transform);
-	mario->AddComponent(marioSprite);	
-	mario->AddComponent(marioRigidBody);
-	mario->AddComponent(ms);	
-	mario->AddComponent(camera);
-	mario->AddComponent(marioCollider);	
-	scene1->addGameObject(marioBG);
-	scene1->addGameObject(mario);	
-	scene1->addGameObject(sonic);
-
-	//CENA 2	
-	
-	GameScene *scene2 = new GameScene();
-	GameObject *sonic2 = new GameObject();
-	SpriteComponent *sonicSprite2 = new SpriteComponent();
-	TransformComponent *sonicTransform2 = new TransformComponent();
-	ColliderComponent *sonicCollider2 = new ColliderComponent();
-	RigidbodyComponent *sonicRigidBody2 = new RigidbodyComponent();
 	MoveScript *msSonic = new MoveScript();
-	sonicSprite2->setSprite("sonic.png");
-	sonicTransform2->setPosition(100, 100);	
-	sonic2->AddComponent(sonicTransform2);
-	sonic2->AddComponent(sonicSprite2);
-	sonic2->AddComponent(msSonic);
-	sonic2->AddComponent(sonicCollider2);
-	sonic2->AddComponent(sonicRigidBody2);
-	scene2->addGameObject(sonic2);
+	sonicSprite->setSprite("sonic.png");
+	sonicTransform->setPosition(0, 100);
+	sonic->AddComponent(sonicTransform);
+	sonic->AddComponent(sonicSprite);
+	sonic->AddComponent(msSonic);
+	scene2->addGameObject(sonic);
 	
 	game.push_scene(scene1);
 	game.push_scene(scene2);	
@@ -404,5 +355,3 @@ int main()
 	*/
 	return 0;
 }
-
-

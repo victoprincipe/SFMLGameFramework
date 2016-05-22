@@ -17,3 +17,4 @@ private:
 	std::string getValue(const char*name);
 	std::fstream file_;
 };
+

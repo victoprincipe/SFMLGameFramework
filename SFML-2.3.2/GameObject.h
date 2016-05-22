@@ -11,7 +11,8 @@ class GameObject
 {	
 private:
 	sf::String name;	
-	std::vector<Component*> components;		
+	std::vector<Component*> components;
+	bool enable = true;
 public:	
 	GameScene *gameScene = NULL;
 	template <class CompType>
@@ -32,8 +33,13 @@ public:
 	void setGameScene(GameScene *gameScene);
 	GameObject *findGameObjectByName(sf::String name);
 	std::vector<GameObject*> getSceneObjects();
+	void Instatiate(GameObject *go);
+	void Destroy(GameObject *go);
 	void Start(GameEngine *game);
 	void Update(GameEngine *game);
-	bool isSceneNull();
+	void setName(sf::String name);
+	void setEnable(bool enable);
+	bool isEnable();
+	sf::String getName();	
 };
 

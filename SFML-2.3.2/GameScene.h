@@ -11,10 +11,10 @@ class GameScene {
 	friend class GameObject;
 private:	
 public:	
-	std::vector<GameObject*> gameObjects;
+	std::vector<GameObject*> gameObjects;	
 	void Start(GameEngine* game);
 	void Update(GameEngine* game);
-	void addGameObject(GameObject * go);
+	void addGameObject(GameObject *go);
 public:
 	GameScene() {};
 	~GameScene() {};	

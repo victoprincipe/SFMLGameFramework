@@ -1,20 +1,48 @@
 #include "GameObject.h"
 
+void GameObject::setName(sf::String name)
+{
+	this->name = name;
+}
+
+sf::String GameObject::getName()
+{
+	return this->name;
+}
+
 GameObject * GameObject::findGameObjectByName(sf::String name)
 {
 	return NULL;
 }
 
-bool GameObject::isSceneNull()
+void GameObject::Instatiate(GameObject *go)
 {
-	if (this->gameScene == NULL)
+	this->gameScene->addGameObject(go);
+}
+
+void GameObject::Destroy(GameObject *go)
+{	
+	int size = this->gameScene->gameObjects.size();
+	for (int i = 0; i < size; i++)
 	{
-		return false;
+		if (this->gameScene->gameObjects[i] == go)
+		{
+			this->gameScene->gameObjects.erase(this->gameScene->gameObjects.begin() + i);			
+			std::cout << "DELETOU";
+		}
 	}
-	else
-	{
-		return true;
-	}
+	delete go;
+	std::cout << "BUGOU";
+}
+
+bool GameObject::isEnable()
+{
+	return this->enable;
+}
+
+void GameObject::setEnable(bool enable)
+{
+	this->enable = enable;
 }
 
 std::vector<GameObject*> GameObject::getSceneObjects()
@@ -42,4 +70,3 @@ void GameObject::setGameScene(GameScene *scene)
 {
 	this->gameScene = scene;
 }
-

@@ -13,17 +13,20 @@ void GameScene::addGameObject(GameObject * go)
 }
 
 void GameScene::Start(GameEngine *game)
-{
-	for (std::vector<GameObject*>::iterator it = this->gameObjects.begin(); it != this->gameObjects.end(); it++)
+{	
+	for (int i = 0; i < this->gameObjects.size(); i++)
 	{
-		(*it)->Start(game);
-	}
+		this->gameObjects[i]->Start(game);
+	}		
 }
 
 void GameScene::Update(GameEngine *game)
-{
-	for (std::vector<GameObject*>::iterator it = this->gameObjects.begin(); it != this->gameObjects.end(); it++)
-	{
-		(*it)->Update(game);
+{	
+	for (int i = 0; i < this->gameObjects.size(); i++)
+	{		
+		if (this->gameObjects[i]->isEnable())
+		{
+			this->gameObjects[i]->Update(game);
+		}						
 	}
 }

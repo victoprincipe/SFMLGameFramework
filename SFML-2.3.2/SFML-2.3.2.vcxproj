@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BulletScript.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoverCano.cpp" />
     <ClCompile Include="MoveScript.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
@@ -171,6 +173,7 @@
     <ClCompile Include="TXTDataBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BulletScript.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Component.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameDataBase.h" />
+    <ClInclude Include="MoverCano.h" />
     <ClInclude Include="MoveScript.h" />
     <ClInclude Include="RigidbodyComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
@@ -188,6 +192,11 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="blueship.png" />
+    <Image Include="bullet.png" />
+    <Image Include="enemy.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

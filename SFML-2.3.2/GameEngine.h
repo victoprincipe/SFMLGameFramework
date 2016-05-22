@@ -19,6 +19,7 @@ public:
 	
 	void change_scene(int index);
 	void push_scene(GameScene* scene);
+	void Instatiate(GameObject *go);
 	void setIcon(sf::String path);	
 	float getDeltaTime();
 	
