@@ -13,7 +13,7 @@
 #include "TextComponent.h"
 #include "SQLiteDataBase.h"
 #include "sqlite3.h"
-
+//comitt
 using namespace std;
 
 
