@@ -170,6 +170,7 @@
     <ClCompile Include="RigidbodyComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="SQLiteDataBase.cpp" />
+    <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="SQLiteDataBase.h" />
+    <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,14 @@
 #include "BulletScript.h"
 
-void BulletScript::Start(GameEngine *game)
+BulletScript::BulletScript() 
 {
+	//score_ = 0;
+	//db = new SQLiteDataBase();
+}
 
+void BulletScript::Start(GameEngine *game)
+{	
+	
 }
 
 void BulletScript::Update(GameEngine *game)
@@ -17,11 +23,18 @@ void BulletScript::Update(GameEngine *game)
 			ColliderComponent *anotherObject = (*it)->GetComponent<ColliderComponent*>();			
 			if (anotherObject != NULL && thisObject != anotherObject)
 			{			
-				std::cout << anotherObject->getX();
+				//std::cout << anotherObject->getX();
 				if (thisObject->getX() + thisObject->getWidth() >= anotherObject->getX() && thisObject->getX() <= anotherObject->getX() + anotherObject->getWidth()
 					&& thisObject->getY() + thisObject->getHeight() >= anotherObject->getY() && thisObject->getY() <= anotherObject->getY() + anotherObject->getHeight())
 				{					
 					(*it)->setEnable(false);
+					//BulletScript::SCORE++;
+					//std::cout << BulletScript::SCORE++;
+					/*
+					score_ = db->load_int_data("pontos");
+					db->save_data("pontos", score_++, 0, 0);					
+					TextComponent * text = this->gameObject->GetComponent<TextComponent*>();					
+					text->set_string(std::string("score: " + score_));*/
 				}
 			}
 

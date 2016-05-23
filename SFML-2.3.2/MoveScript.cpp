@@ -1,8 +1,7 @@
 #include "MoveScript.h"
 
 void MoveScript::Start(GameEngine *game)
-{
-		
+{	
 }
 
 void MoveScript::Update(GameEngine *game)
@@ -16,7 +15,7 @@ void MoveScript::Update(GameEngine *game)
 		ColliderComponent *colliderTube = new ColliderComponent();
 		MoverCano *mc = new MoverCano();	
 		marioTube->setName("enemy");
-		marioTubeSprite->setSprite("blueship.png");
+		marioTubeSprite->setSprite("enemy.png");
 		transformTube->setPosition(800, 100);
 		marioTube->AddComponent(transformTube);
 		marioTube->AddComponent(mc);
@@ -40,13 +39,24 @@ void MoveScript::Update(GameEngine *game)
 		SpriteComponent *bulletSprite = new SpriteComponent();
 		TransformComponent *bulletTransform = new TransformComponent();	
 		ColliderComponent *bulletCollider = new ColliderComponent();
-		BulletScript *bs = new BulletScript;
+		BulletScript *bs = new BulletScript();
+
+		TextComponent *text_ = new TextComponent();
+
+		sf::Font font;
+		font.loadFromFile("arial.ttf");
+		text_->set_font(font);
+		text_->set_position(500, 20);
+		text_->set_char_size(10);
+		text_->set_color(sf::Color::White);
+
 		bulletSprite->setSprite("bullet.png");
 		bulletTransform->setPosition(transform->getPosition().x + 128, transform->getPosition().y + 33);		
 		bullet->AddComponent(bulletSprite);		
 		bullet->AddComponent(bulletTransform);
 		bullet->AddComponent(bulletCollider);
 		bullet->AddComponent(bs);
+		bullet->AddComponent(text_);
 		this->gameObject->Instatiate(bullet);
 	}
 }

@@ -14,7 +14,8 @@ void GameScene::addGameObject(GameObject * go)
 
 void GameScene::Start(GameEngine *game)
 {	
-	for (int i = 0; i < this->gameObjects.size(); i++)
+	int size = this->gameObjects.size();
+	for (int i = 0; i < size; i++)
 	{
 		this->gameObjects[i]->Start(game);
 	}		
@@ -22,7 +23,8 @@ void GameScene::Start(GameEngine *game)
 
 void GameScene::Update(GameEngine *game)
 {	
-	for (int i = 0; i < this->gameObjects.size(); i++)
+	int size = this->gameObjects.size();
+	for (int i = 0; i < size; i++)
 	{		
 		if (this->gameObjects[i]->isEnable())
 		{

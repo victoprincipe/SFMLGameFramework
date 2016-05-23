@@ -10,6 +10,7 @@
 #include "MoveScript.h"
 #include "CameraComponent.h"
 #include "GameDataBase.h"
+#include "TextComponent.h"
 #include "SQLiteDataBase.h"
 #include "sqlite3.h"
 
@@ -112,11 +113,14 @@ void test1() {
 	SpriteComponent *marioSprite = new SpriteComponent();
 	TransformComponent *transformSpaceShip = new TransformComponent();
 	MoveScript *ms = new MoveScript();
+	
+
 	marioSprite->setSprite("blueship.png");
 	transformSpaceShip->setPosition(0, 310);
 	spaceShip->AddComponent(transformSpaceShip);
 	spaceShip->AddComponent(marioSprite);
 	spaceShip->AddComponent(ms);
+	//spaceShip->AddComponent(text_);
 	scene1->addGameObject(spaceShip);
 
 	//CENA 2	
@@ -154,7 +158,7 @@ void testSQLiteDataBase() {
 int main()
 {
 	// SQLite test database
-	testSQLiteDataBase();
+	//testSQLiteDataBase();
 
 	test1();
 

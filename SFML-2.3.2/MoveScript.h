@@ -12,6 +12,7 @@ class MoveScript :	public Component
 private:
 	sf::Clock clock;
 	sf::Time time;
+	
 public:
 	void Start(GameEngine *game) override;
 	void Update(GameEngine *game) override;
