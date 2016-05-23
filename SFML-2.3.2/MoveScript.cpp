@@ -41,22 +41,14 @@ void MoveScript::Update(GameEngine *game)
 		ColliderComponent *bulletCollider = new ColliderComponent();
 		BulletScript *bs = new BulletScript();
 
-		TextComponent *text_ = new TextComponent();
-
-		sf::Font font;
-		font.loadFromFile("arial.ttf");
-		text_->set_font(font);
-		text_->set_position(500, 20);
-		text_->set_char_size(10);
-		text_->set_color(sf::Color::White);
+		
 
 		bulletSprite->setSprite("bullet.png");
 		bulletTransform->setPosition(transform->getPosition().x + 128, transform->getPosition().y + 33);		
 		bullet->AddComponent(bulletSprite);		
 		bullet->AddComponent(bulletTransform);
 		bullet->AddComponent(bulletCollider);
-		bullet->AddComponent(bs);
-		bullet->AddComponent(text_);
+		bullet->AddComponent(bs);		
 		this->gameObject->Instatiate(bullet);
 	}
 }

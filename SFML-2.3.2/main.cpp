@@ -162,6 +162,17 @@ int main()
 
 	test1();
 
+	TextComponent *text_ = new TextComponent();
+
+	sf::Font font;
+	font.loadFromFile("arial.ttf");
+	text_->set_font(font);
+	text_->set_position(500, 20);
+	text_->set_char_size(10);
+	text_->set_color(sf::Color::White);
+
+
+
 	return 0;	
 	/*
 	GameObject *go = new GameObject();	

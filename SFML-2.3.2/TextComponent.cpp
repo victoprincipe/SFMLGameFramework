@@ -63,7 +63,7 @@ void TextComponent::Start(GameEngine * game)
 
 void TextComponent::Update(GameEngine * game)
 {
-	//game->get_window_()->draw(*text_);
+	game->get_window_()->draw(*text_);
 }
 
 TextComponent::~TextComponent()

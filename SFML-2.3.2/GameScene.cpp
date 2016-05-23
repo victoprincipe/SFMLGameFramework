@@ -23,6 +23,7 @@ void GameScene::Start(GameEngine *game)
 
 void GameScene::Update(GameEngine *game)
 {	
+	
 	int size = this->gameObjects.size();
 	for (int i = 0; i < size; i++)
 	{		
