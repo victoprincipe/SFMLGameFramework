@@ -185,6 +185,7 @@
     <ClInclude Include="MoverCano.h" />
     <ClInclude Include="MoveScript.h" />
     <ClInclude Include="RigidbodyComponent.h" />
+    <ClInclude Include="sound.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="SQLiteDataBase.h" />

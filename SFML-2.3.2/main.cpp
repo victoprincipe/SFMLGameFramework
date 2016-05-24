@@ -13,7 +13,10 @@
 #include "TextComponent.h"
 #include "SQLiteDataBase.h"
 #include "sqlite3.h"
-//comitt
+#include "sound.h"
+#include "music.h"
+
+
 using namespace std;
 
 
