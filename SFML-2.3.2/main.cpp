@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -108,7 +109,7 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 }
 
 void test1() {
-	GameEngine game(1280, 720, "Teste1");
+	GameEngine game(800, 600, "Teste1");
 
 	//CENA 1
 	GameScene *scene1 = new GameScene();
@@ -160,6 +161,13 @@ void testSQLiteDataBase() {
 
 int main()
 {
+	sf::Music music;
+	if (!music.openFromFile("musica.ogg")) {
+		std::cout << "error" << std::endl;
+	}
+
+	music.play();
+
 	// SQLite test database
 	//testSQLiteDataBase();
 
@@ -173,10 +181,13 @@ int main()
 	text_->set_position(500, 20);
 	text_->set_char_size(10);
 	text_->set_color(sf::Color::White);
+	
 
+	return 0;
+	
+	
 
-
-	return 0;	
+	
 	/*
 	GameObject *go = new GameObject();	
 	SpriteComponent *sprite = new SpriteComponent;	
