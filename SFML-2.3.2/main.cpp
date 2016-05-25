@@ -161,12 +161,12 @@ void testSQLiteDataBase() {
 
 int main()
 {
-	sf::Music music;
+	/*sf::Music music;
 	if (!music.openFromFile("musica.ogg")) {
 		std::cout << "error" << std::endl;
-	}
+	
 
-	music.play();
+	music.play();*/
 
 	// SQLite test database
 	//testSQLiteDataBase();
