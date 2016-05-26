@@ -104,11 +104,28 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 	}			
 }
 
+void set_text_game(GameObject* text) {	
+	TextComponent *text_ = new TextComponent();	
+	text_->set_font("arial.ttf");
+	text_->set_position(500, 20);
+	text_->set_char_size(10);
+	text_->set_color(sf::Color::White);
+	text_->set_string("SCORE:");
+	text->AddComponent(text_);	
+}
+
 void test1() {
 	GameEngine game(1280, 720, "Teste1");
 
 	//CENA 1
 	GameScene *scene1 = new GameScene();
+
+	//insercao do texto
+	GameObject *text = new GameObject();
+	set_text_game(text);
+	scene1->addGameObject(text);
+	
+	
 	GameObject *spaceShip = new GameObject();
 	SpriteComponent *marioSprite = new SpriteComponent();
 	TransformComponent *transformSpaceShip = new TransformComponent();
@@ -122,7 +139,7 @@ void test1() {
 	spaceShip->AddComponent(ms);
 	//spaceShip->AddComponent(text_);
 	scene1->addGameObject(spaceShip);
-
+	
 	//CENA 2	
 	GameScene *scene2 = new GameScene();
 	GameObject *sonic = new GameObject();
@@ -160,16 +177,7 @@ int main()
 	// SQLite test database
 	//testSQLiteDataBase();
 
-	test1();
-
-	TextComponent *text_ = new TextComponent();
-
-	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	text_->set_font(font);
-	text_->set_position(500, 20);
-	text_->set_char_size(10);
-	text_->set_color(sf::Color::White);
+	test1();	
 
 
 

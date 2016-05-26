@@ -10,7 +10,7 @@ class TextComponent :
 public:
 	TextComponent();
 
-	void set_font(sf::Font font);
+	void set_font(std::string path);
 	void set_char_size(int pixel_size);
 	void set_color(sf::Color color);
 	void set_style(sf::Text::Style style);	
@@ -24,5 +24,5 @@ public:
 	virtual void Update(GameEngine *game) override;
 	~TextComponent();
 protected:
-	sf::Text * text_;	
+	sf::Text text_;	
 };	
