@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -13,6 +14,9 @@
 #include "TextComponent.h"
 #include "SQLiteDataBase.h"
 #include "sqlite3.h"
+#include "sound.h"
+#include "music.h"
+
 
 using namespace std;
 
@@ -115,7 +119,7 @@ void set_text_game(GameObject* text) {
 }
 
 void test1() {
-	GameEngine game(1280, 720, "Teste1");
+	GameEngine game(800, 600, "Teste1");
 
 	//CENA 1
 	GameScene *scene1 = new GameScene();
@@ -174,14 +178,33 @@ void testSQLiteDataBase() {
 
 int main()
 {
+	/*sf::Music music;
+	if (!music.openFromFile("musica.ogg")) {
+		std::cout << "error" << std::endl;
+	
+
+	music.play();*/
+
 	// SQLite test database
 	//testSQLiteDataBase();
 
 	test1();	
 
+	TextComponent *text_ = new TextComponent();
 
+	sf::Font font;
+	font.loadFromFile("arial.ttf");
+	text_->set_font(font);
+	text_->set_position(500, 20);
+	text_->set_char_size(10);
+	text_->set_color(sf::Color::White);
+	
 
-	return 0;	
+	return 0;
+	
+	
+
+	
 	/*
 	GameObject *go = new GameObject();	
 	SpriteComponent *sprite = new SpriteComponent;	

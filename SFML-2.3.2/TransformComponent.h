@@ -20,4 +20,3 @@ public:
 	void Start(GameEngine *game);
 	void Update(GameEngine *game);
 };
-
