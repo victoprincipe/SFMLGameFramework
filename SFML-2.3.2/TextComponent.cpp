@@ -1,18 +1,16 @@
 #include "TextComponent.h"
 
-
-
-TextComponent::TextComponent()
-{	
+TextComponent::TextComponent(std::string font_path) 
+{		
+	set_font(font_path);
 }
 
 void TextComponent::set_font(std::string path)
-{
-	sf::Font font;
+{	
 	if (!font.loadFromFile(path)) {
 		std::cout << "file " << path << " not founded";
 	}
-	text_ = sf::Text("", font);
+	text_.setFont(font);
 }
 
 void TextComponent::set_char_size(int pixel_size)
@@ -66,11 +64,7 @@ void TextComponent::Start(GameEngine * game)
 
 void TextComponent::Update(GameEngine * game)
 {
-	std::cout << "texto = "<< text_.getString().toAnsiString();
-	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	sf::Text text("hola", font);
-	game->get_window_()->draw(this->text_);	
+	game->get_window_()->draw(text_);	
 }
 
 TextComponent::~TextComponent()

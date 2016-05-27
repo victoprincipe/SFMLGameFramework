@@ -2,13 +2,14 @@
 #include <string>
 #include "Component.h"
 #include "GameEngine.h"
-#include "SFML\Graphics\Text.hpp"
+#include "SFML\Graphics.hpp"
 
 class TextComponent :
 	public Component
 {
 public:
-	TextComponent();
+	TextComponent() {};
+	TextComponent(std::string font_path);
 
 	void set_font(std::string path);
 	void set_char_size(int pixel_size);
@@ -24,5 +25,6 @@ public:
 	virtual void Update(GameEngine *game) override;
 	~TextComponent();
 protected:
-	sf::Text text_;	
+	sf::Text text_;
+	sf::Font font;
 };	

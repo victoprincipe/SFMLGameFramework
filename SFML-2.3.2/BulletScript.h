@@ -8,14 +8,15 @@
 #include "SQLiteDataBase.h"
 
 class BulletScript : public Component
-{
+{	
 public:
 	BulletScript();
+	BulletScript(int * score);
 	void Start(GameEngine *game);
 	void Update(GameEngine *game);
 	~BulletScript() {}
 	//static int SCORE;
 private:
-	GameDataBase * db;	
+	int *score;
 };
 

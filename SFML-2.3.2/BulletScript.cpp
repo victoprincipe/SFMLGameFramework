@@ -6,6 +6,11 @@ BulletScript::BulletScript()
 	//db = new SQLiteDataBase();
 }
 
+BulletScript::BulletScript(int * score)
+{
+	this->score = score;
+}
+
 void BulletScript::Start(GameEngine *game)
 {	
 	
@@ -35,6 +40,7 @@ void BulletScript::Update(GameEngine *game)
 					db->save_data("pontos", score_++, 0, 0);					
 					TextComponent * text = this->gameObject->GetComponent<TextComponent*>();					
 					text->set_string(std::string("score: " + score_));*/
+					(*score)++;
 				}
 			}
 

@@ -1,11 +1,25 @@
+#include <sstream>
 #include "MoveScript.h"
+
+std::string MoveScript::toString(int data_int) {
+	std::string result;
+	std::stringstream convert;
+
+	convert << data_int;
+
+	return convert.str();
+}
 
 void MoveScript::Start(GameEngine *game)
 {	
+	score = 0;
 }
 
 void MoveScript::Update(GameEngine *game)
 {		
+	// atualizar o texto da pontuação		
+	this->gameObject->GetComponent<TextComponent*>()->set_string(std::string("SCORE: " + toString(score)));
+
 	this->time = clock.getElapsedTime();	
 	if (this->time.asSeconds() >= 3)
 	{		
@@ -34,15 +48,13 @@ void MoveScript::Update(GameEngine *game)
 		transform->move(0, 10);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-	{		
+	{				
 		GameObject *bullet = new GameObject();
 		SpriteComponent *bulletSprite = new SpriteComponent();
 		TransformComponent *bulletTransform = new TransformComponent();	
 		ColliderComponent *bulletCollider = new ColliderComponent();
-		BulletScript *bs = new BulletScript();
-
+		BulletScript *bs = new BulletScript(&score);			
 		
-
 		bulletSprite->setSprite("bullet.png");
 		bulletTransform->setPosition(transform->getPosition().x + 128, transform->getPosition().y + 33);		
 		bullet->AddComponent(bulletSprite);		

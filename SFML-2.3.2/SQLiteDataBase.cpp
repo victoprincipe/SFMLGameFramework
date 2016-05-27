@@ -6,8 +6,7 @@ using namespace std;
 
 
 SQLiteDataBase::SQLiteDataBase()
-{
-	open();
+{	
 	//create_table();
 }
 
@@ -69,6 +68,31 @@ void SQLiteDataBase::save_data(const char * name, int data_int, float data_float
 			"DATA_FLOAT = " + toString(data_float) + ", " +
 			"DATA_DOUBLE = " + toString(data_double);
 		update_row(key,values);		
+	}
+	else
+	{
+		cout << "Registro inserido com sucesso\n";
+	}
+}
+
+void SQLiteDataBase::save_data(const char * name, int data_int)
+{
+	string key = "'" + string(name) + "'";
+	string values =
+		toString(data_int) + ", "
+		+ toString(0.0f) + ", "
+		+ toString(0.0) + ");";
+	string sqlCommand = "INSERT INTO Data VALUES(" + key + ", " + values;
+
+	const char *sqlInsert = sqlCommand.c_str();
+
+	if (sqlite3_exec(db, sqlInsert, NULL, NULL, &error) != 0)
+	{
+		// update row
+		values = "DATA_INT = " + toString(data_int) + ", " +
+			"DATA_FLOAT = " + toString(0.0f) + ", " +
+			"DATA_DOUBLE = " + toString(0.0);
+		update_row(key, values);
 	}
 	else
 	{
@@ -166,6 +190,12 @@ double SQLiteDataBase::load_double_data(const char * name)
 	}	
 
 	return value_fetched;
+}
+
+void SQLiteDataBase::close()
+{
+	sqlite3_finalize(stmt);
+	sqlite3_close(db);
 }
 
 void SQLiteDataBase::open()

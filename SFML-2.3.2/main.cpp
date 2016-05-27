@@ -108,41 +108,59 @@ void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *c
 	}			
 }
 
-void set_text_game(GameObject* text) {	
-	TextComponent *text_ = new TextComponent();	
-	text_->set_font("arial.ttf");
-	text_->set_position(500, 20);
-	text_->set_char_size(10);
-	text_->set_color(sf::Color::White);
-	text_->set_string("SCORE:");
-	text->AddComponent(text_);	
+void set_text_game_test() {
+	GameEngine game(600, 400, "Text Test");
+
+	GameScene *scene = new GameScene();
+	//insercao do texto
+	GameObject *textObject = new GameObject();		
+
+	TextComponent *text = new TextComponent("arial.ttf");
+
+	text->set_position(20, 20);
+	text->set_char_size(10);
+	text->set_color(sf::Color::Blue);
+	text->set_string("SCORE:");
+
+	textObject->AddComponent(text);	
+	
+	scene->addGameObject(textObject);
+	
+	game.push_scene(scene);
+	game.init();
 }
 
 void test1() {
 	GameEngine game(800, 600, "Teste1");
 
 	//CENA 1
-	GameScene *scene1 = new GameScene();
-
-	//insercao do texto
-	GameObject *text = new GameObject();
-	set_text_game(text);
-	scene1->addGameObject(text);
-	
-	
+	GameScene *scene1 = new GameScene();	
+		
 	GameObject *spaceShip = new GameObject();
 	SpriteComponent *marioSprite = new SpriteComponent();
 	TransformComponent *transformSpaceShip = new TransformComponent();
-	MoveScript *ms = new MoveScript();
-	
+	MoveScript *ms = new MoveScript();	
 
 	marioSprite->setSprite("blueship.png");
 	transformSpaceShip->setPosition(0, 310);
 	spaceShip->AddComponent(transformSpaceShip);
 	spaceShip->AddComponent(marioSprite);
 	spaceShip->AddComponent(ms);
-	//spaceShip->AddComponent(text_);
+
+	//GameObject *textObject = new GameObject();
+
+	TextComponent *text = new TextComponent("arial.ttf");
+
+	text->set_position(20, 20);
+	text->set_char_size(24);
+	text->set_color(sf::Color::White);
+	text->set_style(sf::Text::Style::Bold);
+	text->set_string("SCORE: ");
+
+	spaceShip->AddComponent(text);
+	
 	scene1->addGameObject(spaceShip);
+	//scene1->addGameObject(textObject);
 	
 	//CENA 2	
 	GameScene *scene2 = new GameScene();
@@ -165,14 +183,15 @@ void test1() {
 
 void testSQLiteDataBase() {
 	GameDataBase * db = new SQLiteDataBase();
-	db->save_data("jogador", 1, 12.3, 22.23);
-	db->save_data("jogador1", 1, 12.3, 22.24);
-	db->save_data("jogador2", 1, 12.3, 22.24);
+	db->open();
+	db->save_data("jogador", 1, 12.3f, 22.23);
+	db->save_data("jogador1", 1, 12.3f, 22.24);
+	db->save_data("jogador2", 1, 12.3f, 22.24);
 	cout << db->load_int_data("jogador") << " ";
 	cout << db->load_float_data("jogador") << " ";
 	cout << db->load_double_data("jogador") << " ";
 	cout << db->load_double_data("jogador1");
-
+	db->close();
 	pausa();
 }
 
@@ -188,17 +207,12 @@ int main()
 	// SQLite test database
 	//testSQLiteDataBase();
 
+	// Componente de Texto
+	//set_text_game_test();
+
+	// Instancia 1 teste
 	test1();	
-
-	TextComponent *text_ = new TextComponent();
-
-	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	text_->set_font(font);
-	text_->set_position(500, 20);
-	text_->set_char_size(10);
-	text_->set_color(sf::Color::White);
-	
+	pausa();
 
 	return 0;
 	
