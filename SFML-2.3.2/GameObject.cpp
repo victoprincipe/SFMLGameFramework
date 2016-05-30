@@ -10,6 +10,11 @@ sf::String GameObject::getName()
 	return this->name;
 }
 
+int GameObject::getComponentsSize()
+{	
+	return components.size();
+}
+
 GameObject * GameObject::findGameObjectByName(sf::String name)
 {
 	return NULL;

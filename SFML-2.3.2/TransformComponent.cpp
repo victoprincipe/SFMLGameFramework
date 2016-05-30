@@ -37,6 +37,8 @@ sf::Vector2f TransformComponent::getPosition()
 	return this->transform.getPosition();
 }
 
+
+
 void TransformComponent::move(float x, float y)
 {
 	this->transform.move(x, y);

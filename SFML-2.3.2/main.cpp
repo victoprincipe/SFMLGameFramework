@@ -16,6 +16,7 @@
 #include "sqlite3.h"
 #include "sound.h"
 #include "music.h"
+#include "MoveBalls.h"
 
 
 using namespace std;
@@ -181,6 +182,28 @@ void test1() {
 	game.init();
 }
 
+void instance2() {
+	GameEngine game(800, 600, "Instancia2");
+
+	//CENA 1	
+	GameScene *scene1 = new GameScene();
+
+	// Objeto bola
+	GameObject * balls = new GameObject();
+
+	// Componentes do objeto bola
+	MoveBalls *moveBalls = new MoveBalls(balls, 20);	
+	std::cout << balls->getComponentsSize();
+	// Adição do objeto bola na cena
+	scene1->addGameObject(balls);
+
+	// inserção na cena no jogo
+	game.push_scene(scene1);
+
+	// iniciar loop do jogo
+	game.init();
+}
+
 void testSQLiteDataBase() {
 	GameDataBase * db = new SQLiteDataBase();
 	db->open();
@@ -211,7 +234,10 @@ int main()
 	//set_text_game_test();
 
 	// Instancia 1 teste
-	test1();	
+	//test1();	
+
+	// Instancia 2
+	instance2();
 	pausa();
 
 	return 0;

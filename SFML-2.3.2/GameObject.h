@@ -12,13 +12,13 @@ class GameObject
 private:
 	sf::String name;	
 	std::vector<Component*> components;
-	bool enable = true;
+	bool enable = true;	
 public:	
 	GameScene *gameScene = NULL;
 	template <class CompType>
 	void AddComponent(CompType *comp) {
 		comp->setGameObject(this);
-		components.push_back(comp);
+		components.push_back(comp);		
 	}	
 	template <class CompType>
 	CompType GetComponent() {
@@ -41,5 +41,6 @@ public:
 	void setEnable(bool enable);
 	bool isEnable();
 	sf::String getName();	
+	int getComponentsSize();
 };
 
