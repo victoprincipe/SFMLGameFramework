@@ -20,6 +20,7 @@ public:
 	float getPositionY();
 	float getSpriteWidth();
 	float getSpriteHeight();
+	sf::FloatRect getRect();
 	void Start(GameEngine *game);
 	void Update(GameEngine *game);
 };

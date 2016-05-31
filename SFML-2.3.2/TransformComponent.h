@@ -17,6 +17,7 @@ public:
 	int getZorder();	
 	sf::Vector2f getPosition();
 	sf::Vector2f getScale();
-	virtual void Start(GameEngine *game);
-	virtual void Update(GameEngine *game);
+	void Start(GameEngine *game);
+	void Update(GameEngine *game);
 };
+

@@ -1,25 +1,21 @@
-#include <sstream>
 #include "MoveScript.h"
 
-std::string MoveScript::toString(int data_int) {
-	std::string result;
-	std::stringstream convert;
-
-	convert << data_int;
-
-	return convert.str();
-}
+/*
+std::string to_string(int value) {
+	std::stringstream ss;
+	ss << value;
+	return ss.str();
+}*/
 
 void MoveScript::Start(GameEngine *game)
-{	
-	score = 0;
+{			
+	pontuacao_ = new Pontuacao(this->gameObject->GetComponent<TextComponent*>());
 }
 
 void MoveScript::Update(GameEngine *game)
 {		
 	// atualizar o texto da pontuação		
-	this->gameObject->GetComponent<TextComponent*>()->set_string(std::string("SCORE: " + toString(score)));
-
+	//this->gameObject->GetComponent<TextComponent*>()->set_string(std::string("SCORE: ") + to_string(score_));
 	this->time = clock.getElapsedTime();	
 	if (this->time.asSeconds() >= 3)
 	{		
@@ -27,10 +23,10 @@ void MoveScript::Update(GameEngine *game)
 		SpriteComponent *marioTubeSprite = new SpriteComponent();
 		TransformComponent *transformTube = new TransformComponent();
 		ColliderComponent *colliderTube = new ColliderComponent();
-		MoverCano *mc = new MoverCano();	
+		MoverInimigo *mc = new MoverInimigo();	
 		marioTube->setName("enemy");
 		marioTubeSprite->setSprite("enemy.png");
-		transformTube->setPosition(800, 100);
+		transformTube->setPosition(900, rand() % 800);
 		marioTube->AddComponent(transformTube);
 		marioTube->AddComponent(mc);
 		marioTube->AddComponent(marioTubeSprite);	
@@ -38,14 +34,15 @@ void MoveScript::Update(GameEngine *game)
 		this->gameObject->Instatiate(marioTube);
 		this->clock.restart();
 	}	
-	TransformComponent *transform = this->gameObject->GetComponent<TransformComponent*>();
+		TransformComponent * transform = this->gameObject->GetComponent<TransformComponent*>();
+		RigidbodyComponent *rb = this->gameObject->GetComponent<RigidbodyComponent*>();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		transform->move(0, -10);
+		rb->setAccelY(-0.3);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		transform->move(0, 10);
+		rb->setAccelY(0.3);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{				
@@ -53,8 +50,8 @@ void MoveScript::Update(GameEngine *game)
 		SpriteComponent *bulletSprite = new SpriteComponent();
 		TransformComponent *bulletTransform = new TransformComponent();	
 		ColliderComponent *bulletCollider = new ColliderComponent();
-		BulletScript *bs = new BulletScript(&score);			
-		
+		BulletScript *bs = new BulletScript(pontuacao_);
+
 		bulletSprite->setSprite("bullet.png");
 		bulletTransform->setPosition(transform->getPosition().x + 128, transform->getPosition().y + 33);		
 		bullet->AddComponent(bulletSprite);		

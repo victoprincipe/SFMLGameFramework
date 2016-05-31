@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CameraComponent">
+    <Position X="4" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAiAAAACAAAACAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ColliderComponent">
+    <Position X="7" Y="3.25" Width="2.5" />
+    <InheritanceLine Type="Component" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="11.25" />
+        <Point X="5.25" Y="10.305" />
+        <Point X="8.25" Y="10.305" />
+        <Point X="8.25" Y="8.588" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>wAQABAAACCAAAAQAQABGIAAAAAAAQAAEAABgAGAAAIA=</HashCode>
+      <FileName>ColliderComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameDataBase">
+    <Position X="23" Y="12" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAACAACAAAEAAAAAAAAAAAIIAAAAAAAA=</HashCode>
+      <FileName>GameDataBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine">
+    <Position X="18.75" Y="11.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>ABQJAAABQCEBAAQAQAAAABAoAAggCAIAAAECAAEAAAA=</HashCode>
+      <FileName>GameEngine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject">
+    <Position X="8.75" Y="11.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAACAKAQAICICAhEAAAABEGABAAAAEACIAQAA=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScene">
+    <Position X="14" Y="12" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAABAAAAAAABAAAAIAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>GameScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RigidbodyComponent">
+    <Position X="10" Y="3.25" Width="2.75" />
+    <InheritanceLine Type="Component" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="11.25" />
+        <Point X="5.25" Y="10.305" />
+        <Point X="11.375" Y="10.305" />
+        <Point X="11.375" Y="8.781" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAACAAhAAAAAAAIAAgAyAAAAAIAARAAAAACAA=</HashCode>
+      <FileName>RigidbodyComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpriteComponent">
+    <Position X="13.25" Y="3.25" Width="2.5" />
+    <InheritanceLine Type="Component" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="11.25" />
+        <Point X="5.25" Y="10.295" />
+        <Point X="14.5" Y="10.295" />
+        <Point X="14.5" Y="6.665" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAACAAAAAAEQAAAAASABAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpriteComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransformComponent">
+    <Position X="16.25" Y="3.25" Width="2.75" />
+    <InheritanceLine Type="Component" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="11.25" />
+        <Point X="5.25" Y="10.379" />
+        <Point X="17.625" Y="10.379" />
+        <Point X="17.625" Y="6.858" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAIGAAAACAAAAABABCAAAkAAACAAAAAAAAAAA=</HashCode>
+      <FileName>TransformComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SQLiteDataBase">
+    <Position X="23" Y="6.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAQAACAACEAAEAAAACAAgAAAJIAEAJAAAE=</HashCode>
+      <FileName>SQLiteDataBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Component">
+    <Position X="3.75" Y="11.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAoAAAAAAAAAAAACAAgBAAAAEAAA=</HashCode>
+      <FileName>Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextComponent">
+    <Position X="0.5" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAZAAIMAACgBACCAAABUAAACAAACAABAAAAAAAIAAAA=</HashCode>
+      <FileName>TextComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicComponent">
+    <Position X="19.75" Y="3.25" Width="2.25" />
+    <InheritanceLine Type="Component" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="11.25" />
+        <Point X="5.25" Y="10.379" />
+        <Point X="20.875" Y="10.379" />
+        <Point X="20.875" Y="4.675" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MusicComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BulletScript">
+    <Position X="3.75" Y="20" Width="2.75" />
+    <Members>
+      <Field Name="score_" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgA=</HashCode>
+      <FileName>BulletScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoverInimigo">
+    <Position X="0.5" Y="20" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MoverCano.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoveScript">
+    <Position X="7" Y="20" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAA=</HashCode>
+      <FileName>MoveScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pontuacao">
+    <Position X="6.25" Y="23" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAACACAAABAAAAAABMAAAAAAAAAAAAIAAAAQAAAAA=</HashCode>
+      <FileName>Pontuacao.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceShipGame">
+    <Position X="12.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>SpaceShipGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -16,6 +16,11 @@ void SpriteComponent::setSprite(sf::String path)
 	this->sprite.setTexture(this->texture);
 }
 
+sf::FloatRect SpriteComponent::getRect()
+{
+	return this->sprite.getGlobalBounds();
+}
+
 void SpriteComponent::Start(GameEngine *game)
 {
 	

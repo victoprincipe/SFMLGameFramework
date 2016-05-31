@@ -1,49 +1,39 @@
 #include "BulletScript.h"
 
-BulletScript::BulletScript() 
+BulletScript::BulletScript(Pontuacao * pontuacao)
 {
-	//score_ = 0;
-	//db = new SQLiteDataBase();
-}
-
-BulletScript::BulletScript(int * score)
-{
-	this->score = score;
+	pontuacao_ = pontuacao;
 }
 
 void BulletScript::Start(GameEngine *game)
-{	
-	
+{
+
 }
 
 void BulletScript::Update(GameEngine *game)
 {
 	TransformComponent *transform = this->gameObject->GetComponent<TransformComponent*>();
 	transform->move(20, 0);	
-	for (std::vector<GameObject*>::iterator it = this->gameObject->gameScene->gameObjects.begin(); it != this->gameObject->gameScene->gameObjects.end(); it++)
+	for (int i = 0; i < this->gameObject->gameScene->gameObjectsSize; i++)
 	{
-		ColliderComponent *thisObject = this->gameObject->GetComponent<ColliderComponent*>();
-		if ((*it)->getName() == "enemy")
-		{			
-			ColliderComponent *anotherObject = (*it)->GetComponent<ColliderComponent*>();			
+		ColliderComponent *thisObject = this->gameObject->GetComponent<ColliderComponent*>();		
+			
+			if (this->gameObject->gameScene->gameObjects[i]->getName() == "enemy")
+			{		
+			ColliderComponent *anotherObject = this->gameObject->gameScene->gameObjects[i]->GetComponent<ColliderComponent*>();
 			if (anotherObject != NULL && thisObject != anotherObject)
-			{			
-				//std::cout << anotherObject->getX();
-				if (thisObject->getX() + thisObject->getWidth() >= anotherObject->getX() && thisObject->getX() <= anotherObject->getX() + anotherObject->getWidth()
-					&& thisObject->getY() + thisObject->getHeight() >= anotherObject->getY() && thisObject->getY() <= anotherObject->getY() + anotherObject->getHeight())
+			{				
+				if (thisObject->getRect().intersects(anotherObject->getRect()))
 				{					
-					(*it)->setEnable(false);
-					//BulletScript::SCORE++;
-					//std::cout << BulletScript::SCORE++;
-					/*
-					score_ = db->load_int_data("pontos");
-					db->save_data("pontos", score_++, 0, 0);					
-					TextComponent * text = this->gameObject->GetComponent<TextComponent*>();					
-					text->set_string(std::string("score: " + score_));*/
-					(*score)++;
+					this->gameObject->Destroy(this->gameObject->gameScene->gameObjects[i]);					
+					this->gameObject->Destroy(this->gameObject);
+					pontuacao_->incrementar_pontuacao();
 				}
 			}
-
 		}
+	}
+	if (transform->getPosition().x > game->get_width_())
+	{
+		this->gameObject->Destroy(this->gameObject);
 	}
 }

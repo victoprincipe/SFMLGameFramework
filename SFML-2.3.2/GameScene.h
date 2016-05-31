@@ -11,6 +11,7 @@ class GameScene {
 	friend class GameObject;
 private:	
 public:	
+	int gameObjectsSize;
 	std::vector<GameObject*> gameObjects;	
 	void Start(GameEngine* game);
 	void Update(GameEngine* game);

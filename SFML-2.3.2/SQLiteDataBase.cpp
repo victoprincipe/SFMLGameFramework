@@ -1,13 +1,11 @@
 #include "SQLiteDataBase.h"
-#include <iostream>
-#include <sstream>
 
 using namespace std;
 
 
 SQLiteDataBase::SQLiteDataBase()
 {	
-	//create_table();
+	create_table();
 }
 
 string toString(int data_int) {
@@ -213,7 +211,7 @@ void SQLiteDataBase::open()
 
 void SQLiteDataBase::create_table()
 {
-	const char *sqlCreateTable = "DROP TABLE IF EXISTS Data;CREATE TABLE Data (Name TEXT PRIMARY KEY, DATA_INT INT, DATA_FLOAT REAL, DATA_DOUBLE DOUBLE);";
+	const char *sqlCreateTable = "CREATE TABLE IF NOT EXISTS Data (Name TEXT PRIMARY KEY, DATA_INT INT, DATA_FLOAT REAL, DATA_DOUBLE REAL);";
 
 	if (sqlite3_exec(db, sqlCreateTable, NULL, NULL, &error) != 0)
 	{

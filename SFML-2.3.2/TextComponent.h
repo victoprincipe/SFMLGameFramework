@@ -8,7 +8,7 @@ class TextComponent :
 	public Component
 {
 public:
-	TextComponent() {};
+	TextComponent();
 	TextComponent(std::string font_path);
 
 	void set_font(std::string path);
@@ -16,6 +16,7 @@ public:
 	void set_color(sf::Color color);
 	void set_style(sf::Text::Style style);	
 	void set_string(std::string str);
+	std::string get_text();
 	void set_position(float x, float y);
 	void set_origin(float x, float y);
 	void move(float offset_x, float offset_y);
@@ -27,4 +28,6 @@ public:
 protected:
 	sf::Text text_;
 	sf::Font font;
+private:
+	std::string text_str_;
 };	

@@ -9,12 +9,14 @@ private:
 	float y;
 	float width;
 	float height;
+	sf::FloatRect rect;
 	bool kinematic = false;
 public:
 	void setX(float x);
 	void setY(float y);
 	void setWidth(float width);
 	void setHeight(float hieght);
+	sf::FloatRect getRect();
 	float getX();
 	float getY();
 	float getWidth();

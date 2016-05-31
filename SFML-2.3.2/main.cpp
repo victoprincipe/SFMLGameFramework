@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include "TextComponent.h"
 #include "GameEngine.h"
 #include "Component.h"
 #include "SpriteComponent.h"
@@ -11,12 +11,6 @@
 #include "MoveScript.h"
 #include "CameraComponent.h"
 #include "GameDataBase.h"
-#include "TextComponent.h"
-#include "SQLiteDataBase.h"
-#include "sqlite3.h"
-#include "sound.h"
-#include "music.h"
-#include "MoveBalls.h"
 
 
 using namespace std;
@@ -29,139 +23,37 @@ void pausa()
 	cout << "\n";
 }
 
-void physics(sf::Sprite *s, float *velx, float accelx, float *vely, float accely)
-{	
-	if (*velx > 0)
-	{
-		*velx -= 0.05f;
-	}
-	if (*velx < 0)
-	{
-		*velx += 0.05f;
-	}	
-	if (*velx >= -0.05f && *velx <= 0.05f)
-	{
-		*velx = 0;
-	}
-	if (*vely > 0)
-	{
-		*vely -= 0.05f;
-	}
-	if (*vely < 0)
-	{
-		*vely += 0.05f;
-	}
-	if (*vely >= -0.05f && *vely <= 0.05f)
-	{
-		*vely = 0;
-	}	
-	*vely += 0.05f;
-	*velx += accelx;
-	*vely += accely;
-	s->setPosition(s->getPosition().x + *velx, s->getPosition().y + *vely);
-}
-
-void collider(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, sf::RectangleShape *rs)
-{	
-	if ( (s1->getPosition().x) >= (s2->getPosition().x) && (s1->getPosition().x + s1->getTextureRect().width) <= (s2->getPosition().x + s2->getTextureRect().width) )
-	{
-		if ( (s1->getPosition().y) >= (s2->getPosition().y) && (s1->getPosition().y + s1->getTextureRect().width) <= (s2->getPosition().y + s2->getTextureRect().width) )
-		{
-			*velY = 0;
-			rs->setFillColor(sf::Color(255, 0, 0, 255));					
-		}		
-	}
-	else
-	{		
-		rs->setFillColor(sf::Color(255, 255, 255, 255));
-	}
-}
-
-void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *colide)
-{	
-	if (s1->getPosition().x + s1->getTextureRect().width >= s2->getPosition().x && s1->getPosition().x <= s2->getPosition().x + s2->getTextureRect().width
-		&& s1->getPosition().y + s1->getTextureRect().height >= s2->getPosition().y && s1->getPosition().y <= s2->getPosition().y + s2->getTextureRect().height)
-	{			
-		float overlapX = ((s1->getTextureRect().width + s2->getTextureRect().width) / 2.0f) - std::abs(s1->getPosition().x - s2->getPosition().x);
-		float overlapY = ((s1->getTextureRect().height + s2->getTextureRect().height) / 2.0f) - std::abs(s1->getPosition().y - s2->getPosition().y);
-		if (overlapX > overlapY)
-		{
-			if (*velY > 0.0f)
-			{
-				s1->setPosition(s1->getPosition().x, s1->getPosition().y - overlapY);
-			}
-			else
-			{
-				s1->setPosition(s1->getPosition().x, s1->getPosition().y + overlapY);
-			}			
-		}
-		else
-		{
-			if (s1->getPosition().x > s2->getPosition().x)
-			{
-				s1->setPosition(s1->getPosition().x + overlapX, s1->getPosition().y);
-			}
-			else
-			{
-				s1->setPosition(s1->getPosition().x - overlapX, s1->getPosition().y);
-			}
-		}
-	}			
-}
-
-void set_text_game_test() {
-	GameEngine game(600, 400, "Text Test");
-
-	GameScene *scene = new GameScene();
-	//insercao do texto
-	GameObject *textObject = new GameObject();		
-
+void add_component_texto(GameObject* go) {	
 	TextComponent *text = new TextComponent("arial.ttf");
 
 	text->set_position(20, 20);
-	text->set_char_size(10);
-	text->set_color(sf::Color::Blue);
+	text->set_char_size(30);
+	text->set_color(sf::Color::White);
 	text->set_string("SCORE:");
 
-	textObject->AddComponent(text);	
-	
-	scene->addGameObject(textObject);
-	
-	game.push_scene(scene);
-	game.init();
+	go->AddComponent(text);
 }
 
 void test1() {
-	GameEngine game(800, 600, "Teste1");
+	GameEngine game(1280, 720, "Teste1");
 
 	//CENA 1
-	GameScene *scene1 = new GameScene();	
-		
-	GameObject *spaceShip = new GameObject();
+	GameScene *scene1 = new GameScene();
+	GameObject *spaceShip = new GameObject();	
 	SpriteComponent *marioSprite = new SpriteComponent();
 	TransformComponent *transformSpaceShip = new TransformComponent();
-	MoveScript *ms = new MoveScript();	
+	RigidbodyComponent *rb = new RigidbodyComponent();
+	MoveScript *ms = new MoveScript();
+	//adicionar componente de texto na cena	
+	add_component_texto(spaceShip);
 
 	marioSprite->setSprite("blueship.png");
 	transformSpaceShip->setPosition(0, 310);
 	spaceShip->AddComponent(transformSpaceShip);
 	spaceShip->AddComponent(marioSprite);
 	spaceShip->AddComponent(ms);
-
-	//GameObject *textObject = new GameObject();
-
-	TextComponent *text = new TextComponent("arial.ttf");
-
-	text->set_position(20, 20);
-	text->set_char_size(24);
-	text->set_color(sf::Color::White);
-	text->set_style(sf::Text::Style::Bold);
-	text->set_string("SCORE: ");
-
-	spaceShip->AddComponent(text);
-	
-	scene1->addGameObject(spaceShip);
-	//scene1->addGameObject(textObject);
+	spaceShip->AddComponent(rb);	
+	scene1->addGameObject(spaceShip);	
 	
 	//CENA 2	
 	GameScene *scene2 = new GameScene();
@@ -169,6 +61,7 @@ void test1() {
 	SpriteComponent *sonicSprite = new SpriteComponent();
 	TransformComponent *sonicTransform = new TransformComponent();
 	MoveScript *msSonic = new MoveScript();
+
 	sonicSprite->setSprite("sonic.png");
 	sonicTransform->setPosition(0, 100);
 	sonic->AddComponent(sonicTransform);
@@ -182,69 +75,14 @@ void test1() {
 	game.init();
 }
 
-void instance2() {
-	GameEngine game(800, 600, "Instancia2");
-
-	//CENA 1	
-	GameScene *scene1 = new GameScene();
-
-	// Objeto bola
-	GameObject * balls = new GameObject();
-
-	// Componentes do objeto bola
-	MoveBalls *moveBalls = new MoveBalls(balls, 20);	
-	std::cout << balls->getComponentsSize();
-	// Adição do objeto bola na cena
-	scene1->addGameObject(balls);
-
-	// inserção na cena no jogo
-	game.push_scene(scene1);
-
-	// iniciar loop do jogo
-	game.init();
-}
-
-void testSQLiteDataBase() {
-	GameDataBase * db = new SQLiteDataBase();
-	db->open();
-	db->save_data("jogador", 1, 12.3f, 22.23);
-	db->save_data("jogador1", 1, 12.3f, 22.24);
-	db->save_data("jogador2", 1, 12.3f, 22.24);
-	cout << db->load_int_data("jogador") << " ";
-	cout << db->load_float_data("jogador") << " ";
-	cout << db->load_double_data("jogador") << " ";
-	cout << db->load_double_data("jogador1");
-	db->close();
-	pausa();
-}
+void testSQLiteDataBase();
 
 int main()
-{
-	/*sf::Music music;
-	if (!music.openFromFile("musica.ogg")) {
-		std::cout << "error" << std::endl;
-	
+{		
+	test1();	
 
-	music.play();*/
 
-	// SQLite test database
-	//testSQLiteDataBase();
-
-	// Componente de Texto
-	//set_text_game_test();
-
-	// Instancia 1 teste
-	//test1();	
-
-	// Instancia 2
-	instance2();
-	pausa();
-
-	return 0;
-	
-	
-
-	
+	return 0;	
 	/*
 	GameObject *go = new GameObject();	
 	SpriteComponent *sprite = new SpriteComponent;	
@@ -336,4 +174,97 @@ int main()
 	}
 	*/
 	return 0;
+}
+
+/*void testSQLiteDataBase() {
+	GameDataBase * db = new SQLiteDataBase();
+	db->save_data("jogador", 1, 12.3, 22.23);
+	db->save_data("jogador1", 1, 12.3, 22.24);
+	db->save_data("jogador2", 1, 12.3, 22.24);
+	cout << db->load_int_data("jogador") << " ";
+	cout << db->load_float_data("jogador") << " ";
+	cout << db->load_double_data("jogador") << " ";
+	cout << db->load_double_data("jogador1");
+
+	pausa();
+}*/
+
+void physics(sf::Sprite *s, float *velx, float accelx, float *vely, float accely)
+{
+	if (*velx > 0)
+	{
+		*velx -= 0.05f;
+	}
+	if (*velx < 0)
+	{
+		*velx += 0.05f;
+	}
+	if (*velx >= -0.05f && *velx <= 0.05f)
+	{
+		*velx = 0;
+	}
+	if (*vely > 0)
+	{
+		*vely -= 0.05f;
+	}
+	if (*vely < 0)
+	{
+		*vely += 0.05f;
+	}
+	if (*vely >= -0.05f && *vely <= 0.05f)
+	{
+		*vely = 0;
+	}
+	*vely += 0.05f;
+	*velx += accelx;
+	*vely += accely;
+	s->setPosition(s->getPosition().x + *velx, s->getPosition().y + *vely);
+}
+
+void collider(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, sf::RectangleShape *rs)
+{
+	if ((s1->getPosition().x) >= (s2->getPosition().x) && (s1->getPosition().x + s1->getTextureRect().width) <= (s2->getPosition().x + s2->getTextureRect().width))
+	{
+		if ((s1->getPosition().y) >= (s2->getPosition().y) && (s1->getPosition().y + s1->getTextureRect().width) <= (s2->getPosition().y + s2->getTextureRect().width))
+		{
+			*velY = 0;
+			rs->setFillColor(sf::Color(255, 0, 0, 255));
+		}
+	}
+	else
+	{
+		rs->setFillColor(sf::Color(255, 255, 255, 255));
+	}
+}
+
+void rigidbody(sf::Sprite *s1, sf::Sprite *s2, float *velX, float *velY, bool *colide)
+{
+	if (s1->getPosition().x + s1->getTextureRect().width >= s2->getPosition().x && s1->getPosition().x <= s2->getPosition().x + s2->getTextureRect().width
+		&& s1->getPosition().y + s1->getTextureRect().height >= s2->getPosition().y && s1->getPosition().y <= s2->getPosition().y + s2->getTextureRect().height)
+	{
+		float overlapX = ((s1->getTextureRect().width + s2->getTextureRect().width) / 2.0f) - std::abs(s1->getPosition().x - s2->getPosition().x);
+		float overlapY = ((s1->getTextureRect().height + s2->getTextureRect().height) / 2.0f) - std::abs(s1->getPosition().y - s2->getPosition().y);
+		if (overlapX > overlapY)
+		{
+			if (*velY > 0.0f)
+			{
+				s1->setPosition(s1->getPosition().x, s1->getPosition().y - overlapY);
+			}
+			else
+			{
+				s1->setPosition(s1->getPosition().x, s1->getPosition().y + overlapY);
+			}
+		}
+		else
+		{
+			if (s1->getPosition().x > s2->getPosition().x)
+			{
+				s1->setPosition(s1->getPosition().x + overlapX, s1->getPosition().y);
+			}
+			else
+			{
+				s1->setPosition(s1->getPosition().x - overlapX, s1->getPosition().y);
+			}
+		}
+	}
 }

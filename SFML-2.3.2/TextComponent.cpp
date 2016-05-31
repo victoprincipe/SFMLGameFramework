@@ -1,8 +1,14 @@
 #include "TextComponent.h"
 
-TextComponent::TextComponent(std::string font_path) 
+TextComponent::TextComponent()
+{
+	text_str_ = std::string("");
+}
+
+TextComponent::TextComponent(std::string font_path)
 {		
 	set_font(font_path);
+	text_str_ = std::string("");
 }
 
 void TextComponent::set_font(std::string path)
@@ -31,6 +37,13 @@ void TextComponent::set_style(sf::Text::Style style)
 void TextComponent::set_string(std::string str)
 {
 	text_.setString(str);
+	text_str_ = str;
+}
+
+std::string TextComponent::get_text()
+{	
+	std::cout << text_str_;
+	return text_str_;
 }
 
 void TextComponent::set_position(float x, float y)

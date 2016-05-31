@@ -50,10 +50,16 @@ void ColliderComponent::Start(GameEngine *game)
 	this->height = sprite->getSpriteHeight();	
 }
 
+sf::FloatRect ColliderComponent::getRect()
+{
+	return this->rect;
+}
+
 void ColliderComponent::Update(GameEngine *game)
 {
 	SpriteComponent *sprite = this->gameObject->GetComponent<SpriteComponent*>();
 	TransformComponent *transform = this->gameObject->GetComponent<TransformComponent*>();
+	this->rect = sprite->getRect();
 	this->x = transform->getPosition().x;
 	this->y = transform->getPosition().y;
 	this->width = sprite->getSpriteWidth();

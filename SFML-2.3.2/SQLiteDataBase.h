@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <iostream>
+#include <sstream>
 #include "GameDataBase.h"
 #include "sqlite3.h"
 

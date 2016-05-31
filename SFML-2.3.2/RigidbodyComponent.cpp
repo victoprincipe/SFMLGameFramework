@@ -23,6 +23,26 @@ void RigidbodyComponent::setVelocityY(float velocityY)
 	this->velocityY = velocityY;
 }
 
+void RigidbodyComponent::setAccelX(float accelX)
+{
+	this->accelX = accelX;
+}
+
+void RigidbodyComponent::setAccelY(float accelY)
+{
+	this->accelY = accelY;
+}
+
+float RigidbodyComponent::getAccelX()
+{
+	return this->accelX;
+}
+
+float RigidbodyComponent::getAccelY()
+{
+	return this->accelY;
+}
+
 float RigidbodyComponent::getVelocityX()
 {
 	return this->velocityX;
@@ -81,10 +101,45 @@ void RigidbodyComponent::overlap()
 
 void RigidbodyComponent::Start(GameEngine *game)
 {
-
+	this->friction = 0.1f;
+	this->velocityX = 0;
+	this->velocityY = 0;
+	this->accelX = 0;
+	this->accelY = 0;
 }
 
 void RigidbodyComponent::Update(GameEngine *game)
 {	
-	overlap();		
+	//overlap();		
+	this->velocityX += this->accelX;
+	this->velocityY += this->accelY;
+	if (this->velocityX > 0.3f)
+	{
+		this->velocityX += friction;		
+	}
+	if (this->velocityX < -0.3f)
+	{
+		this->velocityX -= friction;		
+	}
+	if (this->velocityX > -0.3f && this->velocityX < 0.3f)
+	{
+		this->velocityX = 0;
+	}
+	if (this->velocityY > 0.3f)
+	{
+		this->velocityY -= friction;		
+	}
+	if (this->velocityY < -0.3f)
+	{
+		this->velocityY += friction;		
+	}
+	if (this->velocityY > -0.3f && this->velocityY < 0.3f)
+	{
+		this->velocityY = 0;
+	}
+	std::cout << this->velocityY << std::endl;
+	TransformComponent *transform = this->gameObject->GetComponent<TransformComponent*>();
+	transform->move(this->velocityX, this->velocityY);
+	this->accelX = 0;
+	this->accelY = 0;
 }

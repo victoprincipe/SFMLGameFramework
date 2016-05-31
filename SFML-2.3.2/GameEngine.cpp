@@ -6,7 +6,7 @@ GameEngine::GameEngine(int width, int height, sf::String title)
 	window_ = new sf::RenderWindow(sf::VideoMode(width, height), title);	
 	this->width = width;
 	this->height = height;
-	this->title = title;	
+	this->title = title;
 }
 
 void GameEngine::init()
@@ -33,6 +33,7 @@ void GameEngine::Instatiate(GameObject *go)
 
 void GameEngine::game_loop()
 {
+	srand(time(0));
 	while (this->get_window_()->isOpen()) 
 	{	
 		this->get_window_()->clear();

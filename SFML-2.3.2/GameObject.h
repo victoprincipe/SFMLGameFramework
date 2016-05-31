@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Component.h"
+#include "ColliderComponent.h"
 #include "SpriteComponent.h"
 
 class Component;
@@ -12,13 +13,15 @@ class GameObject
 private:
 	sf::String name;	
 	std::vector<Component*> components;
-	bool enable = true;	
+	std::vector<GameObject*> deletedGameObjects;
+	bool enable = true;
+	int size;
 public:	
 	GameScene *gameScene = NULL;
 	template <class CompType>
 	void AddComponent(CompType *comp) {
 		comp->setGameObject(this);
-		components.push_back(comp);		
+		components.push_back(comp);
 	}	
 	template <class CompType>
 	CompType GetComponent() {
@@ -29,7 +32,7 @@ public:
 			}
 		}
 		return NULL; 
-	}
+	}	
 	void setGameScene(GameScene *gameScene);
 	GameObject *findGameObjectByName(sf::String name);
 	std::vector<GameObject*> getSceneObjects();
@@ -39,8 +42,10 @@ public:
 	void Update(GameEngine *game);
 	void setName(sf::String name);
 	void setEnable(bool enable);
+	void freeGameObjects();
 	bool isEnable();
 	sf::String getName();	
-	int getComponentsSize();
+	GameObject();
+	~GameObject();
 };
 

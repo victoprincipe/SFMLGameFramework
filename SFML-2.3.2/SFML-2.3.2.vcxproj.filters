@@ -13,73 +13,52 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\instance2">
-      <UniqueIdentifier>{923869e3-6303-4406-adb7-8c9848bf74f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\instance2">
-      <UniqueIdentifier>{9dee8410-4732-47a5-b5e4-a82f4a7ff5b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\instance1">
-      <UniqueIdentifier>{afabe054-65ce-4ee5-8de5-af5d5d2568f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\instance1">
-      <UniqueIdentifier>{e8319dd3-d469-4078-8673-4639c9beb3f3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\framework">
-      <UniqueIdentifier>{283a1bd8-0380-4c8c-9574-c4644d92f017}</UniqueIdentifier>
+      <UniqueIdentifier>{b53f3ee5-017a-4ac5-a8fb-fbfc6439c281}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\framework">
-      <UniqueIdentifier>{8edd176a-a4c5-40d2-b17e-438143fa890f}</UniqueIdentifier>
+      <UniqueIdentifier>{83db97eb-69f5-492f-bed0-987ea105216c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\instance 1">
+      <UniqueIdentifier>{3ab29e21-d6d7-475d-a140-47ab80e4e3de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ball.cpp">
-      <Filter>Source Files\instance2</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletScript.cpp">
-      <Filter>Source Files\instance1</Filter>
-    </ClCompile>
-    <ClCompile Include="MoverCano.cpp">
-      <Filter>Source Files\instance1</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MoveScript.cpp">
-      <Filter>Source Files\instance1</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CameraComponent.cpp">
+    <ClCompile Include="SpriteComponent.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
-      <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngine.cpp">
-      <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Music.cpp">
+    <ClCompile Include="TransformComponent.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
     <ClCompile Include="RigidbodyComponent.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBodyDynamicComponent.cpp">
+    <ClCompile Include="GameScene.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
+    <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteComponent.cpp">
+    <ClCompile Include="GameEngine.cpp">
       <Filter>Source Files\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Source Files\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>Source Files\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletScript.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SQLiteDataBase.cpp">
       <Filter>Source Files\framework</Filter>
@@ -87,28 +66,22 @@
     <ClCompile Include="TextComponent.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
-    <ClCompile Include="TransformComponent.cpp">
-      <Filter>Source Files\framework</Filter>
+    <ClCompile Include="MoverCano.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MoveBalls.cpp">
-      <Filter>Source Files\instance2</Filter>
+    <ClCompile Include="Pontuacao.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RandomGenerator.cpp">
+    <ClCompile Include="MusicComponent.cpp">
       <Filter>Source Files\framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ball.h">
-      <Filter>Header Files\instance2</Filter>
+    <ClInclude Include="MoveScript.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BulletScript.h">
-      <Filter>Header Files\instance1</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveScript.h">
-      <Filter>Header Files\instance1</Filter>
-    </ClInclude>
-    <ClInclude Include="MoverCano.h">
-      <Filter>Header Files\instance1</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CameraComponent.h">
       <Filter>Header Files\framework</Filter>
@@ -117,9 +90,6 @@
       <Filter>Header Files\framework</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Header Files\framework</Filter>
-    </ClInclude>
-    <ClInclude Include="GameDataBase.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
     <ClInclude Include="GameEngine.h">
@@ -131,22 +101,16 @@
     <ClInclude Include="GameScene.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
-    <ClInclude Include="Music.h">
-      <Filter>Header Files\framework</Filter>
-    </ClInclude>
     <ClInclude Include="RigidbodyComponent.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBodyDynamicComponent.h">
-      <Filter>Header Files\framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>Header Files\framework</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
+    <ClInclude Include="TransformComponent.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
     <ClInclude Include="sqlite3.h">
+      <Filter>Header Files\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
     <ClInclude Include="SQLiteDataBase.h">
@@ -155,19 +119,27 @@
     <ClInclude Include="TextComponent.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
-    <ClInclude Include="TransformComponent.h">
+    <ClInclude Include="Pontuacao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicComponent.h">
       <Filter>Header Files\framework</Filter>
     </ClInclude>
-    <ClInclude Include="MoveBalls.h">
-      <Filter>Header Files\instance2</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomGenerator.h">
+    <ClInclude Include="GameDataBase.h">
       <Filter>Header Files\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="MoverCano.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceShipGame.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="CDFramewrokDominio.cd" />
+    <None Include="CDFramework.cd" />
+    <None Include="CDInstancia1Dominio.cd" />
+    <None Include="CDInstacia1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="enemy.png">
@@ -179,10 +151,5 @@
     <Image Include="bullet.png">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="arial.ttf">
-      <Filter>Resource Files</Filter>
-    </Font>
   </ItemGroup>
 </Project>

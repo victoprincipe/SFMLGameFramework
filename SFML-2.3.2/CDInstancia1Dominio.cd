@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CameraComponent" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAiAAAACAAAACAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ColliderComponent" Collapsed="true">
+    <Position X="2.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>wAQABAAACCAAAAQAQABGIAAAAAAAQAAEAABgAGAAAIA=</HashCode>
+      <FileName>ColliderComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameDataBase" Collapsed="true">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAACAACAAAEAAAAAAAAAAAIIAAAAAAAA=</HashCode>
+      <FileName>GameDataBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine" Collapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQJAAABQCEBAAQAQAAAABAoAAggCAIAAAECAAEAAAA=</HashCode>
+      <FileName>GameEngine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAACAKAQAICICAhEAAAABEGABAAAAEACIAQAA=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScene" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAABAAAAAAABAAAAIAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>GameScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RigidbodyComponent" Collapsed="true">
+    <Position X="4.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAACAAhAAAAAAAIAAgAyAAAAAIAARAAAAACAA=</HashCode>
+      <FileName>RigidbodyComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpriteComponent" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAACAAAAAAEQAAAAASABAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpriteComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransformComponent" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAIGAAAACAAAAABABCAAAkAAACAAAAAAAAAAA=</HashCode>
+      <FileName>TransformComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SQLiteDataBase" Collapsed="true">
+    <Position X="14.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAQAACAACEAAEAAAACAAgAAAJIAEAJAAAE=</HashCode>
+      <FileName>SQLiteDataBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Component" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAoAAAAAAAAAAAACAAgBAAAAEAAA=</HashCode>
+      <FileName>Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicComponent" Collapsed="true">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MusicComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextComponent" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAZAAIMAACgBACCAAABUAAACAAACAABAAAAAAAIAAAA=</HashCode>
+      <FileName>TextComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BulletScript" Collapsed="true">
+    <Position X="2.5" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="Component" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="4.062" />
+        <Point X="4.75" Y="4.437" />
+        <Point X="3.25" Y="4.437" />
+        <Point X="3.25" Y="5.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAgA=</HashCode>
+      <FileName>BulletScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoverInimigo" Collapsed="true">
+    <Position X="0.75" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="Component" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="4.062" />
+        <Point X="4.75" Y="4.437" />
+        <Point X="1.5" Y="4.437" />
+        <Point X="1.5" Y="5.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MoverCano.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pontuacao" Collapsed="true">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACACAAABAAAAAABMAAAAAAAAAAAAIAAAAQAAAAA=</HashCode>
+      <FileName>Pontuacao.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceShipGame" Collapsed="true">
+    <Position X="10.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>SpaceShipGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoveScript" Collapsed="true">
+    <Position X="4.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAA=</HashCode>
+      <FileName>MoveScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

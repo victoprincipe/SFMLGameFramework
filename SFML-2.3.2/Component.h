@@ -22,6 +22,6 @@ public:
 	}
 	void setGameObject(GameObject *go);
 	virtual void Start(GameEngine *game) = 0; 
-	virtual void Update(GameEngine *game) = 0;	
+	virtual void Update(GameEngine *game) = 0;
 };
 

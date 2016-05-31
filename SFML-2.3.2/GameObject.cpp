@@ -10,11 +10,6 @@ sf::String GameObject::getName()
 	return this->name;
 }
 
-int GameObject::getComponentsSize()
-{	
-	return components.size();
-}
-
 GameObject * GameObject::findGameObjectByName(sf::String name)
 {
 	return NULL;
@@ -27,17 +22,14 @@ void GameObject::Instatiate(GameObject *go)
 
 void GameObject::Destroy(GameObject *go)
 {	
-	int size = this->gameScene->gameObjects.size();
+	this->size = this->gameScene->gameObjects.size();
 	for (int i = 0; i < size; i++)
 	{
 		if (this->gameScene->gameObjects[i] == go)
-		{
+		{			
 			this->gameScene->gameObjects.erase(this->gameScene->gameObjects.begin() + i);			
-			std::cout << "DELETOU";
 		}
-	}
-	delete go;
-	std::cout << "BUGOU";
+	}		
 }
 
 bool GameObject::isEnable()
@@ -63,8 +55,13 @@ void GameObject::Start(GameEngine *game)
 	}
 }
 
-void GameObject::Update(GameEngine *game)
+void GameObject::freeGameObjects()
 {
+	this->gameScene->gameObjects.shrink_to_fit();
+}
+
+void GameObject::Update(GameEngine *game)
+{	
 	for (std::vector<Component*>::iterator it = this->components.begin(); it != this->components.end(); it++)
 	{
 		(*it)->Update(game);
@@ -74,4 +71,14 @@ void GameObject::Update(GameEngine *game)
 void GameObject::setGameScene(GameScene *scene)
 {
 	this->gameScene = scene;
+}
+
+GameObject::GameObject()
+{
+
+}
+
+GameObject::~GameObject()
+{
+
 }

@@ -3,20 +3,15 @@
 #include "GameObject.h"
 #include "ColliderComponent.h"
 #include "TransformComponent.h"
-#include "TextComponent.h"
-#include "GameDataBase.h"
-#include "SQLiteDataBase.h"
+#include "Pontuacao.h"
 
 class BulletScript : public Component
-{	
-public:
-	BulletScript();
-	BulletScript(int * score);
+{
+public:		
+	BulletScript(Pontuacao * pontuacao);
 	void Start(GameEngine *game);
-	void Update(GameEngine *game);
-	~BulletScript() {}
-	//static int SCORE;
-private:
-	int *score;
+	void Update(GameEngine *game);	
+private:	
+	Pontuacao* pontuacao_;
 };
 

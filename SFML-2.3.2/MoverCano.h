@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "Component.h"
 
-class MoverCano : public Component
+class MoverInimigo : public Component
 {
 public:
 	void Start(GameEngine *game) override;

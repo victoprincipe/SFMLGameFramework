@@ -157,7 +157,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BulletScript.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
@@ -166,37 +165,31 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MoveBalls.cpp" />
     <ClCompile Include="MoverCano.cpp" />
     <ClCompile Include="MoveScript.cpp" />
-    <ClCompile Include="Music.cpp" />
-    <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="MusicComponent.cpp" />
+    <ClCompile Include="Pontuacao.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />
-    <ClCompile Include="RigidBodyDynamicComponent.cpp" />
-    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="SQLiteDataBase.cpp" />
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ball.h" />
     <ClInclude Include="BulletScript.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="GameDataBase.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
-    <ClInclude Include="GameDataBase.h" />
-    <ClInclude Include="MoveBalls.h" />
+    <ClInclude Include="SpaceShipGame.h" />
     <ClInclude Include="MoverCano.h" />
     <ClInclude Include="MoveScript.h" />
-    <ClInclude Include="Music.h" />
-    <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="MusicComponent.h" />
+    <ClInclude Include="Pontuacao.h" />
     <ClInclude Include="RigidbodyComponent.h" />
-    <ClInclude Include="RigidBodyDynamicComponent.h" />
-    <ClInclude Include="Sound.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="SQLiteDataBase.h" />
@@ -204,16 +197,15 @@
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="CDFramework.cd" />
+    <None Include="CDFramewrokDominio.cd" />
+    <None Include="CDInstacia1.cd" />
+    <None Include="CDInstancia1Dominio.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="blueship.png" />
     <Image Include="bullet.png" />
     <Image Include="enemy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="arial.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
