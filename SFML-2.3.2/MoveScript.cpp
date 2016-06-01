@@ -54,7 +54,8 @@ void MoveScript::Update(GameEngine *game)
 		TransformComponent *bulletTransform = new TransformComponent();	
 		ColliderComponent *bulletCollider = new ColliderComponent();
 		BulletScript *bs = new BulletScript(&score);			
-		
+		//SoundComponent *bulletSound = new SoundComponent();//som
+
 		bulletSprite->setSprite("bullet.png");
 		bulletTransform->setPosition(transform->getPosition().x + 128, transform->getPosition().y + 33);		
 		bullet->AddComponent(bulletSprite);		
@@ -62,5 +63,6 @@ void MoveScript::Update(GameEngine *game)
 		bullet->AddComponent(bulletCollider);
 		bullet->AddComponent(bs);		
 		this->gameObject->Instatiate(bullet);
+		//bullet->AddComponent(bulletSound); //som
 	}
 }

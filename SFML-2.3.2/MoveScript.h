@@ -6,6 +6,7 @@
 #include "CameraComponent.h"
 #include "MoverCano.h"
 #include "BulletScript.h"
+#include "SoundComponent.h"//som
 
 class MoveScript :	public Component
 {	

@@ -198,6 +198,8 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="musica.ogg" />
+    <None Include="OpenAL32.dll" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="blueship.png" />
@@ -206,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="tiro.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

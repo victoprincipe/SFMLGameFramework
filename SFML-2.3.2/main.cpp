@@ -178,7 +178,16 @@ void test1() {
 	game.push_scene(scene1);
 	game.push_scene(scene2);
 	game.setIcon("sfmlIcon.png");
+	
+	/*sf::Music music;
+	if (!music.openFromFile("musica.ogg"))
+		std::cout << "error" << std::endl;
+	music.play();
+
 	game.init();
+	*/
+
+	
 }
 
 void testSQLiteDataBase() {
@@ -196,14 +205,7 @@ void testSQLiteDataBase() {
 }
 
 int main()
-{
-	/*sf::Music music;
-	if (!music.openFromFile("musica.ogg")) {
-		std::cout << "error" << std::endl;
-	
-
-	music.play();*/
-
+{	
 	// SQLite test database
 	//testSQLiteDataBase();
 
@@ -213,12 +215,8 @@ int main()
 	// Instancia 1 teste
 	test1();	
 	pausa();
-
 	return 0;
-	
-	
-
-	
+		
 	/*
 	GameObject *go = new GameObject();	
 	SpriteComponent *sprite = new SpriteComponent;	

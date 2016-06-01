@@ -7,7 +7,7 @@ SoundComponent::SoundComponent(std::string font_path)
 
 void SoundComponent::set_font(std::string path)
 {
-	if (!font.loadFromFile(path)) {
+	if (!font.loadFromFile("musica.ogg")) {
 		std::cout << "file " << path << " not founded";
 	}
 	text_.setFont(font);
