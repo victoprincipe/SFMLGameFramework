@@ -14,8 +14,8 @@
 #include "TextComponent.h"
 #include "SQLiteDataBase.h"
 #include "sqlite3.h"
-#include "sound.h"
-#include "music.h"
+#include "SoundComponent.h"
+#include "MusicComponent.h"
 
 
 using namespace std;

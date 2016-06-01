@@ -167,9 +167,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoverCano.cpp" />
     <ClCompile Include="MoveScript.cpp" />
-    <ClCompile Include="Music.cpp" />
+    <ClCompile Include="MusicComponent.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />
-    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="SQLiteDataBase.cpp" />
     <ClCompile Include="TextComponent.cpp" />
@@ -186,9 +186,9 @@
     <ClInclude Include="GameDataBase.h" />
     <ClInclude Include="MoverCano.h" />
     <ClInclude Include="MoveScript.h" />
-    <ClInclude Include="Music.h" />
+    <ClInclude Include="MusicComponent.h" />
     <ClInclude Include="RigidbodyComponent.h" />
-    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="SQLiteDataBase.h" />
