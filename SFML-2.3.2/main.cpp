@@ -179,13 +179,13 @@ void test1() {
 	game.push_scene(scene2);
 	game.setIcon("sfmlIcon.png");
 	
-	/*sf::Music music;
+	sf::Music music;
 	if (!music.openFromFile("musica.ogg"))
 		std::cout << "error" << std::endl;
 	music.play();
 
 	game.init();
-	*/
+	
 
 	
 }
